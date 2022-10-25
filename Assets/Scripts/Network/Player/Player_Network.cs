@@ -51,10 +51,10 @@ public class Player_Network : NetworkBehaviour
                 point = 1
             };
         }
-
+/*
         // player movement
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        transform.position += speed * Time.deltaTime * move;
+        transform.position += speed * Time.deltaTime * move;*/
     }
 
     // ***********************-------RPC-------***********************************
