@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using cakeslice;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -26,13 +28,18 @@ public class PlayerMove : MonoBehaviour
     float jumpHeight = 3f;
     float velocityY = 0;
 
+    Camera camera;
+    GameObject currentFocussedWaste;
+    bool focusFlag;
+    GameObject prevFocussedWaste;
+
     // Start is called before the first frame update
     void Start()
     {
 
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-
+        camera = Cam.GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -42,6 +49,32 @@ public class PlayerMove : MonoBehaviour
         HandleMovement();
 
         //HandleGravityAndJump();
+
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "waste")
+            {
+                currentFocussedWaste = hit.collider.gameObject;
+                if (prevFocussedWaste==null) prevFocussedWaste=currentFocussedWaste;
+                else
+                {
+                    prevFocussedWaste.GetComponent<Outline>().eraseRenderer = true;
+                    prevFocussedWaste = currentFocussedWaste;
+                }
+                currentFocussedWaste.GetComponent<Outline>().eraseRenderer=false;
+                focusFlag = true;
+            }
+
+            if (hit.collider.gameObject != currentFocussedWaste && focusFlag)
+            {
+                currentFocussedWaste.GetComponent<Outline>().eraseRenderer = true;
+                focusFlag=false;
+            }
+        }
+        
+        
 
 
     }

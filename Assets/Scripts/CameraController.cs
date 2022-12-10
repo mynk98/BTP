@@ -5,16 +5,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    private const float YMin = 0f;
-    private const float YMax = 50.0f;
+    [SerializeField] float YMin = 0f;
+    [SerializeField] float YMax = 50.0f;
 
     public Transform lookAt;
 
-    public Transform Player;
 
     public float distance = 10.0f;
-    private float currentX = 0.0f;
-    private float currentY = 0.0f;
+    public float currentX = 0.0f;
+    public float currentY = 0.0f;
+    public float height;
     public float sensivity = 4.0f;
 
 
@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
         transform.position = lookAt.position + rotation * Direction;
 
-        transform.LookAt(lookAt.position);
+        transform.LookAt(lookAt.position+new Vector3(0,height,0));
 
 
 
