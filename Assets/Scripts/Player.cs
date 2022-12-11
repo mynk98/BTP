@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using cakeslice;
 
-public class PlayerMove : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
 
@@ -33,6 +33,9 @@ public class PlayerMove : MonoBehaviour
     bool focusFlag;
     GameObject prevFocussedWaste;
 
+    public static GameObject currentlySelected;
+    public static int state=0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,8 @@ public class PlayerMove : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         camera = Cam.GetComponent<Camera>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -65,6 +70,15 @@ public class PlayerMove : MonoBehaviour
                 }
                 currentFocussedWaste.GetComponent<Outline>().eraseRenderer=false;
                 focusFlag = true;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    currentlySelected = currentFocussedWaste;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                    Time.timeScale = 0;
+                    state = 1;
+                }
             }
 
             if (hit.collider.gameObject != currentFocussedWaste && focusFlag)
@@ -72,6 +86,8 @@ public class PlayerMove : MonoBehaviour
                 currentFocussedWaste.GetComponent<Outline>().eraseRenderer = true;
                 focusFlag=false;
             }
+
+            
         }
         
         
