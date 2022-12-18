@@ -15,12 +15,19 @@ public class Dustbin : MonoBehaviour
     };
 
     public DustbinType dustbinType;
-    public List<Waste> wastes;
+    /*public List<Waste> wastes;*/
+    public Dictionary<string, List<Waste>> wastes = new Dictionary<string, List<Waste>>();
 
+    private Player playerInstance;
+
+    private void Awake()
+    {
+        playerInstance = Player.GetInstance();
+    }
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         
     }
 
@@ -30,16 +37,34 @@ public class Dustbin : MonoBehaviour
         
     }
 
-    public void AddWaste()
+    public void AddWaste(string type)
     {
-        if (Player.state == 1)
+        if (Player.state == (int)Player.PlayerState.collecting)
         {
-            wastes.Add(Player.currentlySelected.GetComponent<Waste>());
-            Player.currentlySelected.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Time.timeScale = 1;
-            Player.state = 0;
+            Waste wasteObject = Player.currentlySelected.GetComponent<Waste>();
+            string wasteType = wasteObject.wasteType.ToString();
+
+            if (wasteType == dustbinType.ToString() )
+            {
+                if (wastes.ContainsKey(wasteType))
+                {
+                    wastes[wasteType].Add(wasteObject);
+                }
+                else
+                {
+                    wastes.Add(wasteType, new List<Waste>());
+                    wastes[wasteType].Add(wasteObject);
+                }
+                Destroy(Player.currentlySelected);
+                Player.state = (int)Player.PlayerState.idle;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Time.timeScale = 1;
+                playerInstance.binUI.SetActive(false);
+
+                //Debug.Log("Added " + wasteType + " to " + dustbinType);
+            }
+
         }
     }
 }

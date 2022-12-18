@@ -39,8 +39,5 @@ public class CameraController : MonoBehaviour
         transform.position = lookAt.position + rotation * Direction;
 
         transform.LookAt(lookAt.position+new Vector3(0,height,0));
-
-
-
     }
 }

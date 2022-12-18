@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using cakeslice;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -34,7 +35,31 @@ public class Player : MonoBehaviour
     GameObject prevFocussedWaste;
 
     public static GameObject currentlySelected;
+
+    [Header("UI")]
+    [SerializeField] public GameObject binUI;
+
+    public enum PlayerState
+    {
+        idle,
+        collecting,
+        driving
+    };
+
     public static int state=0;
+
+    // Create instance of this 
+    private static Player _instance;
+    public static Player GetInstance()
+    {
+        return _instance;
+    }
+
+    void Awake()
+    {
+        _instance = this;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -73,21 +98,22 @@ public class Player : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
+                    binUI.SetActive(true);
                     currentlySelected = currentFocussedWaste;
                     Cursor.lockState = CursorLockMode.Confined;
                     Cursor.visible = true;
                     Time.timeScale = 0;
-                    state = 1;
+                    // state = 1;
+                    state = (int)PlayerState.collecting;
+                    currentFocussedWaste = null;
                 }
             }
 
-            if (hit.collider.gameObject != currentFocussedWaste && focusFlag)
+            /*else if (hit.collider.gameObject != currentFocussedWaste && focusFlag)
             {
                 currentFocussedWaste.GetComponent<Outline>().eraseRenderer = true;
                 focusFlag=false;
-            }
-
-            
+            }*/
         }
         
         

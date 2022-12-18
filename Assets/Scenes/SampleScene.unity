@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -830,6 +830,7 @@ MonoBehaviour:
   Cam: {fileID: 963194228}
   animator: {fileID: 0}
   rotationSmoothTime: 0
+  binUI: {fileID: 0}
 --- !u!54 &1270879382
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -930,6 +931,44 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8588174592317997826, guid: 80fb846a78f122a4f930f7bbabe4b885, type: 3}
   m_PrefabInstance: {fileID: 8588174593103387119}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646686080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646686081}
+  m_Layer: 5
+  m_Name: Bin Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1646686081
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646686080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6255583841577425675}
+  - {fileID: 1830678206}
+  m_Father: {fileID: 6255583842136072057}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1778491261
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1037,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1830678205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830678206}
+  - component: {fileID: 1830678207}
+  m_Layer: 5
+  m_Name: Bins
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1830678206
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830678205}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6255583842150036772}
+  - {fileID: 6255583841547408659}
+  - {fileID: 6255583842152084883}
+  - {fileID: 6255583840557647281}
+  - {fileID: 6255583840498400285}
+  - {fileID: 6255583840918064147}
+  m_Father: {fileID: 1646686081}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1914.5, y: 1063}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1830678207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830678205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 50
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1963720257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,18 +1437,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255583840498400286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6255583840915417900}
-  m_Father: {fileID: 6255583842136072057}
+  m_Father: {fileID: 1830678206}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 743, y: 139}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1257.25, y: -531.5}
   m_SizeDelta: {x: 150, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6255583840498400286
@@ -1357,7 +1465,7 @@ GameObject:
   - component: {fileID: 6255583840498400354}
   - component: {fileID: 6255583840498400356}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1410,13 +1518,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6255583840498400356}
         m_TargetAssemblyTypeName: Dustbin, Assembly-CSharp
         m_MethodName: AddWaste
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: food
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &6255583840498400355
@@ -1440,7 +1548,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustbinType: 4
-  wastes: []
 --- !u!224 &6255583840526564616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1613,18 +1720,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255583840557647282}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6255583841110008674}
-  m_Father: {fileID: 6255583842136072057}
+  m_Father: {fileID: 1830678206}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 576, y: 139}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1057.25, y: -531.5}
   m_SizeDelta: {x: 150, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6255583840557647282
@@ -1641,7 +1748,7 @@ GameObject:
   - component: {fileID: 6255583840557647289}
   - component: {fileID: 6255583840557647288}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1702,13 +1809,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6255583840557647289}
         m_TargetAssemblyTypeName: Dustbin, Assembly-CSharp
         m_MethodName: AddWaste
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: paper
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6255583840557647289
@@ -1724,7 +1831,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustbinType: 3
-  wastes: []
 --- !u!114 &6255583840682707856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,7 +2115,7 @@ GameObject:
   - component: {fileID: 6255583840918064149}
   - component: {fileID: 6255583840918064148}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Other
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2060,18 +2166,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255583840918064140}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6255583840526564616}
-  m_Father: {fileID: 6255583842136072057}
+  m_Father: {fileID: 1830678206}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 909, y: 139}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1457.25, y: -531.5}
   m_SizeDelta: {x: 150, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6255583840918064148
@@ -2121,13 +2227,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6255583840918064149}
         m_TargetAssemblyTypeName: Dustbin, Assembly-CSharp
         m_MethodName: AddWaste
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: other
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6255583840918064149
@@ -2143,7 +2249,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustbinType: 5
-  wastes: []
 --- !u!222 &6255583841110008672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2293,7 +2398,7 @@ GameObject:
   - component: {fileID: 6255583841547408661}
   - component: {fileID: 6255583841547408660}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2344,18 +2449,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255583841547408652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6255583841863709645}
-  m_Father: {fileID: 6255583842136072057}
+  m_Father: {fileID: 1830678206}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 253, y: 139}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 657.25, y: -531.5}
   m_SizeDelta: {x: 150, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6255583841547408660
@@ -2405,13 +2510,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6255583841547408661}
         m_TargetAssemblyTypeName: Dustbin, Assembly-CSharp
         m_MethodName: AddWaste
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: glass
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6255583841547408661
@@ -2427,7 +2532,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustbinType: 1
-  wastes: []
 --- !u!1 &6255583841577425668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &6255583841577425673
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2537,7 +2641,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 95, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2550,17 +2654,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255583841577425668}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6255583842136072057}
-  m_RootOrder: 6
+  m_Father: {fileID: 1646686081}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -603.63, y: -341}
+  m_AnchoredPosition: {x: 0, y: 225}
   m_SizeDelta: {x: 666.75, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6255583841863709644
@@ -2746,13 +2850,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6255583842150036772}
-  - {fileID: 6255583841547408659}
-  - {fileID: 6255583842152084883}
-  - {fileID: 6255583840557647281}
-  - {fileID: 6255583840498400285}
-  - {fileID: 6255583840918064147}
-  - {fileID: 6255583841577425675}
+  - {fileID: 1646686081}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2812,18 +2910,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255583842150036773}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6255583840682707857}
-  m_Father: {fileID: 6255583842136072057}
+  m_Father: {fileID: 1830678206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 91, y: 139}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 457.25, y: -531.5}
   m_SizeDelta: {x: 150, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6255583842150036773
@@ -2840,7 +2938,7 @@ GameObject:
   - component: {fileID: 6255583842150036781}
   - component: {fileID: 6255583842150036780}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Plastic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2931,13 +3029,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6255583842150036781}
         m_TargetAssemblyTypeName: Dustbin, Assembly-CSharp
         m_MethodName: AddWaste
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: plastic
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6255583842150036781
@@ -2953,7 +3051,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustbinType: 0
-  wastes: []
 --- !u!1 &6255583842152084876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,7 +3065,7 @@ GameObject:
   - component: {fileID: 6255583842152084880}
   - component: {fileID: 6255583842152084884}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3021,13 +3118,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6255583842152084884}
         m_TargetAssemblyTypeName: Dustbin, Assembly-CSharp
         m_MethodName: AddWaste
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: metal
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &6255583842152084881
@@ -3075,18 +3172,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255583842152084876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6255583842439636701}
-  m_Father: {fileID: 6255583842136072057}
+  m_Father: {fileID: 1830678206}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 413, y: 139}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 857.25, y: -531.5}
   m_SizeDelta: {x: 150, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6255583842152084884
@@ -3102,7 +3199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustbinType: 2
-  wastes: []
 --- !u!222 &6255583842439636515
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3386,6 +3482,10 @@ PrefabInstance:
       propertyPath: Cam
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 8588174593789869590, guid: 80fb846a78f122a4f930f7bbabe4b885, type: 3}
+      propertyPath: binUI
+      value: 
+      objectReference: {fileID: 1646686080}
     - target: {fileID: 8588174593789869590, guid: 80fb846a78f122a4f930f7bbabe4b885, type: 3}
       propertyPath: speed
       value: 5
