@@ -44,7 +44,7 @@ public class Dustbin : MonoBehaviour
             Waste wasteObject = Player.currentlySelected.GetComponent<Waste>();
             string wasteType = wasteObject.wasteType.ToString();
 
-            if (wasteType == dustbinType.ToString() )
+            /*if (wasteType == dustbinType.ToString() )*/
             {
                 if (wastes.ContainsKey(wasteType))
                 {
@@ -55,7 +55,7 @@ public class Dustbin : MonoBehaviour
                     wastes.Add(wasteType, new List<Waste>());
                     wastes[wasteType].Add(wasteObject);
                 }
-                Destroy(Player.currentlySelected);
+                Player.currentlySelected.SetActive(false);
                 Player.state = (int)Player.PlayerState.idle;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;

@@ -109,11 +109,11 @@ public class Player : MonoBehaviour
                 }
             }
 
-            /*else if (hit.collider.gameObject != currentFocussedWaste && focusFlag)
+            else if (hit.collider.gameObject != currentFocussedWaste && focusFlag)
             {
                 currentFocussedWaste.GetComponent<Outline>().eraseRenderer = true;
-                focusFlag=false;
-            }*/
+                focusFlag = false;
+            }
         }
         
         
