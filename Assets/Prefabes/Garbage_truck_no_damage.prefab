@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1405222035}
   - component: {fileID: 1405222034}
-  - component: {fileID: 1405222036}
   m_Layer: 0
   m_Name: Vehicle camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1405222035
 Transform:
   m_ObjectHideFlags: 0
@@ -76,26 +75,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1405222036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405222026}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af8db5ca163d1e4428838af3945101e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  YMin: 0
-  YMax: 50
-  lookAt: {fileID: 3478613263011058928}
-  distance: 6.6
-  currentX: 0
-  currentY: 0
-  height: 0
-  sensivity: 500
 --- !u!1 &1618056304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,7 +3026,7 @@ GameObject:
   - component: {fileID: 3478613263011058931}
   m_Layer: 0
   m_Name: Garbage_truck_no_damage
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3108,7 +3087,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3480783091767875686}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fc60303e7717da4992495a1502e162d, type: 3}
   m_Name: 
@@ -3123,6 +3102,8 @@ MonoBehaviour:
   WheelRRtrans: {fileID: 3479014621665668796}
   eulertest: {x: 0, y: 0, z: 0}
   centreofmass: {fileID: 1618056305}
+  type: 0
+  vehicleCamera: {fileID: 1405222026}
 --- !u!1 &3481005986733923042
 GameObject:
   m_ObjectHideFlags: 0

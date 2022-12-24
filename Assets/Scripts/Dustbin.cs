@@ -39,7 +39,7 @@ public class Dustbin : MonoBehaviour
 
     public void AddWaste(string type)
     {
-        if (Player.state == (int)Player.PlayerState.collecting)
+        if (Player.state == Player.PlayerState.collecting)
         {
             Waste wasteObject = Player.currentlySelected.GetComponent<Waste>();
             string wasteType = wasteObject.wasteType.ToString();

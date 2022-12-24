@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         driving
     };
 
-    public static int state=0;
+    public static PlayerState state=PlayerState.idle;
 
     // Create instance of this 
     private static Player _instance;
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
                     Cursor.visible = true;
                     Time.timeScale = 0;
                     // state = 1;
-                    state = (int)PlayerState.collecting;
+                    state = PlayerState.collecting;
                     currentFocussedWaste = null;
                 }
             }
