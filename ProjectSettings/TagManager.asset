@@ -6,6 +6,7 @@ TagManager:
   tags:
   - waste
   - Vehicle
+  - Vehicle Canvas
   layers:
   - Default
   - TransparentFX

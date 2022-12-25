@@ -91,9 +91,13 @@ public class Player : MonoBehaviour
                 else
                 {
                     prevFocussedWaste.GetComponent<Outline>().eraseRenderer = true;
+                    prevFocussedWaste.GetComponent<Waste>().wasteCanvas.gameObject.SetActive(false);
                     prevFocussedWaste = currentFocussedWaste;
                 }
                 currentFocussedWaste.GetComponent<Outline>().eraseRenderer=false;
+                currentFocussedWaste.GetComponent<Waste>().wasteCanvas.gameObject.SetActive(true);
+                Transform wasteCanvasTransform = currentFocussedWaste.GetComponent<Waste>().wasteCanvas.transform;
+                wasteCanvasTransform.LookAt(wasteCanvasTransform.position+Cam.rotation*Vector3.forward,Cam.rotation*Vector3.up);
                 focusFlag = true;
 
                 if (Input.GetMouseButtonDown(0))
@@ -112,6 +116,7 @@ public class Player : MonoBehaviour
             else if (hit.collider.gameObject != currentFocussedWaste && focusFlag)
             {
                 currentFocussedWaste.GetComponent<Outline>().eraseRenderer = true;
+                currentFocussedWaste.GetComponent<Waste>().wasteCanvas.gameObject.SetActive(false);
                 focusFlag = false;
             }
         }

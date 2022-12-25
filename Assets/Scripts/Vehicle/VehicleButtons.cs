@@ -10,10 +10,11 @@ public class VehicleButtons : MonoBehaviour
     public GameObject crosshairCanvas;
     public List<CarController> vehicles;
     public VehicleEntryExit lastVehicleCheckpoint;
+    
 
     private void Start()
     {
-       
+        vehicleCanvas.SetActive(false);
     }
 
     public void AddButtons(List<CarController> vehicles,VehicleEntryExit checkpoint)
@@ -32,6 +33,17 @@ public class VehicleButtons : MonoBehaviour
             GameObject newButton= Instantiate<GameObject>(button, transform);
             newButton.GetComponentInChildren<TMP_Text>().text = vehicles[i].type.ToString();
         }
+    }
+
+    public void CloseButton()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        vehicleCanvas.SetActive(false);
+        lastVehicleCheckpoint.isCloseButtonPressed = true;
+
+
     }
 
 

@@ -15,11 +15,13 @@ public class Waste : MonoBehaviour
     };
 
     public WasteType wasteType;
+    public Canvas wasteCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        wasteCanvas = GetComponentInChildren<Canvas>();
+        wasteCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

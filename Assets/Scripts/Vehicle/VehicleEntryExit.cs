@@ -5,24 +5,37 @@ using UnityEngine;
 public class VehicleEntryExit : MonoBehaviour
 {
     public List<CarController> availableVehicles;
-    [SerializeField] GameObject vehicleCanvas;
+    public GameObject vehicleCanvas;
+    public bool isCloseButtonPressed=false;
 
     public static ParticleSystem particleSystem;
     public static VehicleEntryExit get;
 
     [SerializeField] Player player;
 
-    private void Start()
+    private void Awake()
     {
-        //particleSystem = GetComponent<ParticleSystem>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         get = this;
+        vehicleCanvas = GameObject.FindGameObjectWithTag("Vehicle Canvas");
     }
 
+    private void Start()
+    {
+        
+        
+        
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        isCloseButtonPressed = false;
+    }
 
     private void OnTriggerStay (Collider other)
     {
+        if (isCloseButtonPressed == true) return;
+
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) return;
         if (other.tag == "Player" && Player.state!=Player.PlayerState.driving && availableVehicles.Count>0)
         {
@@ -66,6 +79,8 @@ public class VehicleEntryExit : MonoBehaviour
 
         }
     }
+
+    
 
     /*public static void ChangeColor()
     {
