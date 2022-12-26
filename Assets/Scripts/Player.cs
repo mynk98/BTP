@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] public GameObject binUI;
+    [SerializeField] public GameObject binSelectUI;
 
     public enum PlayerState
     {
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour
                     currentlySelected = currentFocussedWaste;
                     Cursor.lockState = CursorLockMode.Confined;
                     Cursor.visible = true;
-                    Time.timeScale = 0;
+                    Time.timeScale = 0;                                                             
                     // state = 1;
                     state = PlayerState.collecting;
                     currentFocussedWaste = null;

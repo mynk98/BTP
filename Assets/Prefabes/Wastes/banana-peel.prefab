@@ -129,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0ae18d5763ba84c94dc41e312e255a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wasteType: 4
   wasteCanvas: {fileID: 0}
+  wasteType: 4
+  wasteName: 5
 --- !u!54 &-7794354238463194644
 Rigidbody:
   m_ObjectHideFlags: 0

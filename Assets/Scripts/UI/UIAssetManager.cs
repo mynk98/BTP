@@ -6,22 +6,13 @@ using UnityEngine.UI;
 
 public class UIAssetManager : MonoBehaviour
 {
-
-    public enum garbageTypes
-    {
-        plastic,
-        glass,
-        metal,
-        paper,
-        food,
-        other
-    };
+    
 
 
     [Serializable]
     public struct NamedImage
     {
-        public garbageTypes name;
+        public Waste.WasteNames name;
         public Texture2D image;
     }
     
@@ -38,11 +29,11 @@ public class UIAssetManager : MonoBehaviour
         _instance = this;
     }
 
-    public Texture2D GetImage(garbageTypes type)
+    public Texture2D GetImage(Waste.WasteNames name)
     {
         foreach (NamedImage namedImage in Garbages)
         {
-            if (namedImage.name == type)
+            if (namedImage.name == name)
             {
                 return namedImage.image;
             }
