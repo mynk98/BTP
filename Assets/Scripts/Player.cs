@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     {
         idle,
         collecting,
+        sorting,
         driving
     };
 
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
     {
 
         HandleMovement();
+        HandleKeyInput();
 
         //HandleGravityAndJump();
 
@@ -141,6 +143,34 @@ public class Player : MonoBehaviour
 
         }
         else animator.SetBool("isRunning", false);
+    }
+
+    private void HandleKeyInput() {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if(state == PlayerState.sorting) {
+                print("if ");
+
+                binUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Time.timeScale = 1;
+                // state = 1;
+                state = PlayerState.idle;
+
+            }
+            else
+            {
+                print("else ");
+                binUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+                Time.timeScale = 0;
+                // state = 1;
+                state = PlayerState.sorting;
+            }
+            print("Presed B, State: " +  state);
+        }
     }
 
     void HandleGravityAndJump()

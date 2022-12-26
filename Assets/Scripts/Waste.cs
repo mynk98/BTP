@@ -20,8 +20,8 @@ public class Waste : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        wasteCanvas = GetComponentInChildren<Canvas>();
-        wasteCanvas.gameObject.SetActive(false);
+        //wasteCanvas = GetComponentInChildren<Canvas>();
+        //wasteCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

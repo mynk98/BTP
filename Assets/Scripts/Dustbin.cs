@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Dustbin : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Dustbin : MonoBehaviour
     public DustbinType dustbinType;
     /*public List<Waste> wastes;*/
     public Dictionary<string, List<Waste>> wastes = new Dictionary<string, List<Waste>>();
+    public GameObject binSelectUI;
 
     private Player playerInstance;
 
@@ -25,46 +27,92 @@ public class Dustbin : MonoBehaviour
         playerInstance = Player.GetInstance();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    { 
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void AddWaste(string type)
+    public void OnButtonPress()
     {
         if (Player.state == Player.PlayerState.collecting)
         {
-            Waste wasteObject = Player.currentlySelected.GetComponent<Waste>();
-            string wasteType = wasteObject.wasteType.ToString();
+            AddWaste();
+        }
+        else if (Player.state == Player.PlayerState.sorting)
+        {
+            print("sorting");
+            SortWaste();
+        }
+    }
+    
+    private void AddWaste()
+    {
+        Waste wasteObject = Player.currentlySelected.GetComponent<Waste>();
+        string bintype = dustbinType.ToString();
 
-            /*if (wasteType == dustbinType.ToString() )*/
+        /*if (wasteType == dustbinType.ToString() )*/
+        {
+            if (wastes.ContainsKey(bintype))
             {
-                if (wastes.ContainsKey(wasteType))
+                wastes[bintype].Add(wasteObject);
+            }
+            else
+            {
+                wastes.Add(bintype, new List<Waste>());
+                wastes[bintype].Add(wasteObject);
+            }
+            Player.currentlySelected.SetActive(false);
+            Player.state = (int)Player.PlayerState.idle;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1;
+            playerInstance.binUI.SetActive(false);
+
+            //Debug.Log("Added " + wasteType + " to " + dustbinType);
+        }
+    }
+
+    private void SortWaste()
+    {
+        string type = dustbinType.ToString();
+        
+        // Print all values from a dictionar.
+        foreach (KeyValuePair<string, List<Waste>> entry in wastes)
+        {
+            /*if (entry.Key == type)
+            {
+                foreach (Waste waste in entry.Value)
                 {
-                    wastes[wasteType].Add(wasteObject);
+                    waste.gameObject.SetActive(true);
+                    waste.wasteCanvas.gameObject.SetActive(false);
                 }
-                else
-                {
-                    wastes.Add(wasteType, new List<Waste>());
-                    wastes[wasteType].Add(wasteObject);
+            }
+            else
+            {
+                foreach (Waste waste in entry.Value)
+                {         
+                    waste.gameObject.SetActive(false);
                 }
-                Player.currentlySelected.SetActive(false);
-                Player.state = (int)Player.PlayerState.idle;
+            }*/ 
+            print("bin: " + type + " Key: " + entry.Key + " value: " + entry.Value);
+
+        }
+
+        /*if (wastes.ContainsKey(type))
+        {
+            *//*if (wastes[type].Count > 0)
+            {
+                Waste waste = wastes[type][0];
+                wastes[type].Remove(waste);
+                waste.gameObject.SetActive(true);
+                waste.transform.position = playerInstance.transform.position + playerInstance.transform.forward * 2;
+                playerInstance.currentWaste = waste;
+                playerInstance.state = (int)Player.PlayerState.idle;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Time.timeScale = 1;
                 playerInstance.binUI.SetActive(false);
-
-                //Debug.Log("Added " + wasteType + " to " + dustbinType);
+            }*//*
+            foreach (var item in wastes[type])
+            {
+                print(item);
             }
-
-        }
+        }*/
     }
 }
+        
