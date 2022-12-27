@@ -8,6 +8,8 @@ public class GarbageCard : MonoBehaviour
     {
         Transform parent = transform.parent;
         int index = transform.GetSiblingIndex();
+
+        BinSelectUI.GetInstance().RemoveCard(index);
     }
     
 }
