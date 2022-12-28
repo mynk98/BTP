@@ -17,7 +17,7 @@ public class Dustbin : MonoBehaviour
 
     public DustbinType dustbinType;
     /*public List<Waste> wastes;*/
-    public Dictionary<string, List<Waste>> wastes = new Dictionary<string, List<Waste>>();
+    public Dictionary<Waste, int> wastes = new Dictionary<Waste, int>();
 
     private Player _playerInstance;
 
@@ -46,14 +46,14 @@ public class Dustbin : MonoBehaviour
 
         /*if (wasteType == dustbinType.ToString() )*/
         {
-            if (wastes.ContainsKey(bintype))
+            if (wastes.ContainsKey(wasteObject))
             {
-                wastes[bintype].Add(wasteObject);
+                wastes[wasteObject] += 1;
             }
             else
             {
-                wastes.Add(bintype, new List<Waste>());
-                wastes[bintype].Add(wasteObject);
+                wastes.Add(wasteObject, 0);
+                wastes[wasteObject] += 1;
             }
             Player.currentlySelected.SetActive(false);
             Player.state = (int)Player.PlayerState.idle;
@@ -72,21 +72,18 @@ public class Dustbin : MonoBehaviour
         print("SortWaste:  " + type);
         _playerInstance.binUI.SetActive(false);
         _playerInstance.binSelectUI.SetActive(true);
-        if (wastes.ContainsKey(type))
-        {
-            BinSelectUI.GetInstance().CreateBinCards(wastes[type]);
+        if (wastes.Count > 0){
+            BinSelectUI.GetInstance().CreateBinCards(wastes);
         }
-        else
-        {
+        else{
             print("No " + type + " in bin");
         }
     }
 
     public void RemoveWaste(int index, string type)
     {
-        wastes[type].RemoveAt(index);
-
-
+        // wastes[type].RemoveAt(index);
+        print("Removing Waste");
     }
 }
         

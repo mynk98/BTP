@@ -566,7 +566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8588174592317710114
 Transform:
   m_ObjectHideFlags: 0
@@ -653,6 +653,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rotationSmoothTime: 0.15
   binUI: {fileID: 0}
+  binSelectUI: {fileID: 0}
 --- !u!1 &8588174592317997828
 GameObject:
   m_ObjectHideFlags: 0
