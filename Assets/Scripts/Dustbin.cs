@@ -17,7 +17,7 @@ public class Dustbin : MonoBehaviour
 
     public DustbinType dustbinType;
     /*public List<Waste> wastes;*/
-    public Dictionary<Waste, int> wastes = new Dictionary<Waste, int>();
+    public Dictionary<Waste.WasteNames, int> wastes = new Dictionary<Waste.WasteNames, int>();
 
     private Player _playerInstance;
 
@@ -45,15 +45,15 @@ public class Dustbin : MonoBehaviour
         string bintype = dustbinType.ToString();
 
         /*if (wasteType == dustbinType.ToString() )*/
-        {
-            if (wastes.ContainsKey(wasteObject))
+        //{
+            
+            if (wastes.ContainsKey(wasteObject.wasteName))
             {
-                wastes[wasteObject] += 1;
+                wastes[wasteObject.wasteName] += 1;
             }
             else
             {
-                wastes.Add(wasteObject, 0);
-                wastes[wasteObject] += 1;
+                wastes.Add(wasteObject.wasteName, 1);
             }
             Player.currentlySelected.SetActive(false);
             Player.state = (int)Player.PlayerState.idle;
@@ -63,7 +63,7 @@ public class Dustbin : MonoBehaviour
             _playerInstance.binUI.SetActive(false);
 
             //Debug.Log("Added " + wasteType + " to " + dustbinType);
-        }
+        //}
     }
 
     private void SortWaste()

@@ -39,13 +39,14 @@ public class BinSelectUI : MonoBehaviour
         //_cardImage.texture = UIAssetManager.GetInstance().GetImage(Player.currentlySelected.GetComponent<Waste>().wasteName);
     }
 
-    internal void CreateBinCards(Dictionary<Waste, int > wastes)
+    internal void CreateBinCards(Dictionary<Waste.WasteNames, int> wastes)
     {
         print("Creating Bins");
-        foreach ( KeyValuePair<Waste, int> waste in wastes)
+        foreach (KeyValuePair<Waste.WasteNames, int> waste in wastes)
         {
             GameObject card = Instantiate(_garbageCard, _content.transform);
-            card.GetComponentInChildren<RawImage>().texture = _assetManager.GetImage(waste.Key.wasteName);
+            card.GetComponentInChildren<RawImage>().texture = _assetManager.GetImage(waste.Key);
+            card.GetComponentInChildren<TextMeshProUGUI>().text = waste.Value.ToString();
             card.SetActive(true);
         }
     }

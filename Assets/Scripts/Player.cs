@@ -123,10 +123,6 @@ public class Player : MonoBehaviour
                 focusFlag = false;
             }
         }
-        
-        
-
-
     }
 
     private void HandleMovement()
@@ -147,7 +143,7 @@ public class Player : MonoBehaviour
     }
 
     private void HandleKeyInput() {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && state == PlayerState.idle)
         {
             if(state == PlayerState.sorting) {
                 print("if ");
