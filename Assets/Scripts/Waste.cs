@@ -14,6 +14,13 @@ public class Waste : MonoBehaviour
         other
     };
 
+    public enum DisposalType
+    {
+        recycle,
+        compost,
+        landfill
+    }
+
     public enum WasteNames
     {
         Bean_Can,
@@ -28,6 +35,8 @@ public class Waste : MonoBehaviour
     public Canvas wasteCanvas;
     public WasteType wasteType;
     public WasteNames wasteName;
+    public DisposalType disposalType;
+    
 
     // Start is called before the first frame update
     void Start()
