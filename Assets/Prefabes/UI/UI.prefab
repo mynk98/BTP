@@ -6302,7 +6302,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8785717417188325089}
         m_TargetAssemblyTypeName: GarbageCard, Assembly-CSharp
-        m_MethodName: CheckIfRecyclable
+        m_MethodName: OnButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

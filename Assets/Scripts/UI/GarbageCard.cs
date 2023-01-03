@@ -13,24 +13,38 @@ public class GarbageCard : MonoBehaviour
         BinSelectUI.GetInstance().RemoveCard(index);
     }
 
-    public void CheckIfRecyclable()
+    public void OnButtonPress()
     {
-        if (Player.state != Player.PlayerState.recycling) return;
-
         int index = transform.GetSiblingIndex();
 
-        if (WasteAssets.Instance.GetWaste(BinSelectUI.currentBinWastes[index]).disposalType == Waste.DisposalType.recycle) //if recyclable
+        if (Player.state == Player.PlayerState.recycling)
+        {
+            if (WasteAssets.Instance.GetWaste(BinSelectUI.currentBinWastes[index]).disposalType == Waste.DisposalType.recycle) //if recyclable
+            {
+                Player.currentSelectedDustbin.wastes.Remove(BinSelectUI.currentBinWastes[index]);
+
+                //give score
+            }
+            else
+            {
+                BinSelectUI.isAllRecyclableSelected = false;
+            }
+
+            BinSelectUI.GetInstance().RemoveCard(index);
+        }
+        else if (Player.state == Player.PlayerState.segregating)
         {
             Player.currentSelectedDustbin.wastes.Remove(BinSelectUI.currentBinWastes[index]);
-
-            //give score
+            BinSelectUI.currentSegregatingWaste = WasteAssets.Instance.GetWaste(BinSelectUI.currentBinWastes[index]);
+            BinSelectUI.isSegregateActive = true;
+            BinSelectUI.GetInstance().ClearCards();
+            BinSelectUI.GetInstance().binCanvas.SetActive(true);
+            BinSelectUI.GetInstance().binCanvas.GetComponentInChildren<TMPro.TMP_Text>().text = "Select the bin in which you want to put the garbage";
+            BinSelectUI.GetInstance().binCanvasCloseButton.SetActive(false);
+            BinSelectUI.GetInstance().gameObject.SetActive(false);
         }
-        else
-        {
-            BinSelectUI.isAllRecyclableSelected = false;
-        }
 
-        BinSelectUI.GetInstance().RemoveCard(index);
+        
     }
 
     

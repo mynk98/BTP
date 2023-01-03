@@ -43,6 +43,12 @@ public class Dustbin : MonoBehaviour
         {
             Recycle();
         }
+        else if (Player.state == Player.PlayerState.segregating )
+        {
+            if (!BinSelectUI.isSegregateActive) Segregate();
+            else ChooseBinToSegregate();
+
+        }
     }
     
     private void AddWaste()
@@ -112,7 +118,6 @@ public class Dustbin : MonoBehaviour
             {
                 Player.state = Player.PlayerState.recycling;
                 string type = dustbinType.ToString();
-                print("SortWaste:  " + type);
                 Message.get.ShowMessage("Note", "Select recyclable wastes.");
                 _playerInstance.binUI.SetActive(false);
                 _playerInstance.binSelectUI.SetActive(true);
@@ -137,6 +142,41 @@ public class Dustbin : MonoBehaviour
         {
             Message.get.ShowMessage("Warning!", "Please select correct bin.");
         }
+    }
+
+    public void Segregate()
+    {
+        Player.state = Player.PlayerState.segregating;
+        string type = dustbinType.ToString();
+        Message.get.ShowMessage("Note", "Select wastes that you want to segregate");
+        _playerInstance.binUI.SetActive(false);
+        _playerInstance.binSelectUI.SetActive(true);
+        _playerInstance.binSelectUI.GetComponent<BinSelectUI>().recycleButton.SetActive(true);
+        if (wastes.Count > 0)
+        {
+            BinSelectUI.GetInstance().CreateBinCards(wastes);
+        }
+        else
+        {
+            print("No " + type + " in bin");
+        }
+    }
+
+    public void ChooseBinToSegregate()
+    {
+        if (wastes.ContainsKey(BinSelectUI.currentSegregatingWaste.wasteName))
+        {
+            wastes[BinSelectUI.currentSegregatingWaste.wasteName] += 1;
+        }
+        else
+        {
+            wastes.Add(BinSelectUI.currentSegregatingWaste.wasteName, 1);
+        }
+
+        Message.get.ShowMessage("Note", "Selected waste has been added to the new bin");
+        BinSelectUI.isSegregateActive = false;
+        BinSelectUI.GetInstance().binCanvasCloseButton.SetActive(true);
+        BinSelectUI.GetInstance().binCanvas.GetComponentInChildren<TMPro.TMP_Text>().text = "Select the bin whoose garbage you want to segregate";
     }
 }
         
