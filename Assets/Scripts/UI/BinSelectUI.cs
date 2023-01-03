@@ -71,7 +71,8 @@ public class BinSelectUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        currentBinWastes.Clear();
+        if (currentBinWastes!=null) currentBinWastes.Clear();
+
     }
 
     internal void RemoveCard(int index)
