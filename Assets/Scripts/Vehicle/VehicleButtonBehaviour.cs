@@ -20,8 +20,6 @@ public class VehicleButtonBehaviour : MonoBehaviour
         player.GetComponent<Player>().Cam.gameObject.SetActive(false);
         player.SetActive(false);
         VehicleCheckpoints.get.ChangeColor();
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Player.DeactivateUIHelper();
     }
 }

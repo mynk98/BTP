@@ -41,9 +41,7 @@ public class VehicleEntryExit : MonoBehaviour
         {
             vehicleCanvas.SetActive(true);
             vehicleCanvas.GetComponentInChildren<VehicleButtons>().AddButtons(availableVehicles,this);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            Player.ActivateUIHelper();
         }
 
         else if (other.tag=="Vehicle" && Player.state == Player.PlayerState.driving && other.GetComponent<Rigidbody>().velocity.magnitude <=1)

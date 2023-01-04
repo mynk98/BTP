@@ -133,6 +133,7 @@ MonoBehaviour:
   wasteCanvas: {fileID: 0}
   wasteType: 4
   wasteName: 4
+  disposalType: 1
 --- !u!54 &-6128774426895723412
 Rigidbody:
   m_ObjectHideFlags: 0

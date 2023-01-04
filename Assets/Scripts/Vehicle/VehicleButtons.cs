@@ -37,9 +37,7 @@ public class VehicleButtons : MonoBehaviour
 
     public void CloseButton()
     {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Player.DeactivateUIHelper();
         vehicleCanvas.SetActive(false);
         lastVehicleCheckpoint.isCloseButtonPressed = true;
 

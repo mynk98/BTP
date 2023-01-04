@@ -20,17 +20,14 @@ public class LibraryCheckpoint : MonoBehaviour
         if (other.tag == "Player" && Player.state != Player.PlayerState.driving)
         {
             libraryCanvas.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            Player.ActivateUIHelper();
+            
         }
     }
 
     public void CloseButton()
     {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Player.DeactivateUIHelper();
         libraryCanvas.SetActive(false);
         isCloseButtonPressed = true;
     }

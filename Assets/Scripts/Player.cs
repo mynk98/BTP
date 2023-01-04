@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     GameObject prevFocussedWaste;
 
     public static GameObject currentlySelected;
+    public static RecycleCheckpoints currentSelectedRecycleCheckpoint;
+    public static Dustbin currentSelectedDustbin;
 
     [Header("UI")]
     [SerializeField] public GameObject binUI;
@@ -45,7 +47,8 @@ public class Player : MonoBehaviour
         idle,
         collecting,
         sorting,
-        driving
+        driving,
+        recycling
     };
 
     public static PlayerState state=PlayerState.idle;
@@ -70,8 +73,7 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         camera = Cam.GetComponent<Camera>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        DeactivateUIHelper();
     }
 
     // Update is called once per frame
@@ -106,10 +108,9 @@ public class Player : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     binUI.SetActive(true);
+                    binUI.GetComponentInChildren<TMPro.TMP_Text>().text = "Choose the correct trash bin to put in garbage.";
                     currentlySelected = currentFocussedWaste;
-                    Cursor.lockState = CursorLockMode.Confined;
-                    Cursor.visible = true;
-                    Time.timeScale = 0;                                                             
+                    ActivateUIHelper();
                     // state = 1;
                     state = PlayerState.collecting;
                     currentFocussedWaste = null;
@@ -149,9 +150,7 @@ public class Player : MonoBehaviour
                 print("if ");
 
                 binUI.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1;
+                DeactivateUIHelper();
                 // state = 1;
                 state = PlayerState.idle;
 
@@ -160,9 +159,8 @@ public class Player : MonoBehaviour
             {
                 print("else ");
                 binUI.SetActive(true);
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
-                Time.timeScale = 0;
+                binUI.GetComponentInChildren<TMPro.TMP_Text>().text = "Choose bin to view its garbage contents.";
+                ActivateUIHelper();
                 // state = 1;
                 state = PlayerState.sorting;
             }
@@ -180,6 +178,28 @@ public class Player : MonoBehaviour
         }
         velocityY -= gravity * gravityMultiplier * Time.deltaTime;
         controller.Move(Vector3.up * velocityY * Time.deltaTime);
+    }
+
+    public static void ActivateUIHelper()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+    }
+
+    public static void DeactivateUIHelper()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+    }
+
+    public void BinUICloseButton()
+    {
+        if(currentSelectedRecycleCheckpoint!=null)currentSelectedRecycleCheckpoint.isCloseButtonPressed = true;
+        binUI.SetActive(false);
+        state = PlayerState.idle;
+        DeactivateUIHelper();
     }
 
 }
