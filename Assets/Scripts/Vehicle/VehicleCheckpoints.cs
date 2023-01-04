@@ -10,6 +10,7 @@ public class VehicleCheckpoints : MonoBehaviour
     void Start()
     {
         get = this;
+        ChangeColor();
     }
 
     public void ChangeColor()

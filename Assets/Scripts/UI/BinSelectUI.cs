@@ -9,7 +9,8 @@ public class BinSelectUI : MonoBehaviour
 {
     [SerializeField] private GameObject _content;
     [SerializeField] private GameObject _garbageCard;
-    [SerializeField] GameObject binCanvas;
+    public GameObject binCanvas;
+    public GameObject binCanvasCloseButton;
     public GameObject recycleButton;
     //[SerializeField] private RawImage _cardImage;
     //[SerializeField] private TextMeshProUGUI _cardText;
@@ -20,6 +21,8 @@ public class BinSelectUI : MonoBehaviour
 
     public static List<Waste.WasteNames> currentBinWastes;
     public static bool isAllRecyclableSelected = true;
+    public static bool isSegregateActive = false;
+    public static Waste currentSegregatingWaste;
 
     public static BinSelectUI GetInstance()
     
@@ -68,6 +71,8 @@ public class BinSelectUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        if (currentBinWastes!=null) currentBinWastes.Clear();
+
     }
 
     internal void RemoveCard(int index)

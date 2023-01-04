@@ -48,7 +48,8 @@ public class Player : MonoBehaviour
         collecting,
         sorting,
         driving,
-        recycling
+        recycling,
+        segregating
     };
 
     public static PlayerState state=PlayerState.idle;
@@ -197,6 +198,7 @@ public class Player : MonoBehaviour
     public void BinUICloseButton()
     {
         if(currentSelectedRecycleCheckpoint!=null)currentSelectedRecycleCheckpoint.isCloseButtonPressed = true;
+        SegregationCheckpoint.isCloseButtonPressed = true;
         binUI.SetActive(false);
         state = PlayerState.idle;
         DeactivateUIHelper();
