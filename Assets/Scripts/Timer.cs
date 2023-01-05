@@ -36,14 +36,14 @@ public class Timer : MonoBehaviour
 
         if (isTimerRunning)
         {
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime;
             if (timeElapsed >= 1)
             {
-                currentTime += timeElapsed;
+                currentTime -= timeElapsed;
                 timeElapsed = 0;
             }
-
         }
+
     }
 
 
@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
     {
         isTimerRunning = true;
         timeElapsed = 0;
-        currentTime = 0;
+        currentTime = 600;
 
         /*startMin = int.Parse(System.DateTime.Now.ToString().Substring(14, 2));
         startSec = int.Parse(System.DateTime.Now.ToString().Substring(17, 2));
