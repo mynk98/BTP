@@ -44,6 +44,7 @@ public class QNAAssets : MonoBehaviour
 
     internal QNA GetQuestion(Categories category)
     {
+        QNAManager.GetInstance().gameObject.SetActive(true);
         QNA returnQ = new QNA();
         foreach (var q in qnas)
         {

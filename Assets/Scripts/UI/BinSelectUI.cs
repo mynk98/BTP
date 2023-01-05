@@ -20,6 +20,7 @@ public class BinSelectUI : MonoBehaviour
     private static BinSelectUI _instance;
 
     public static List<Waste.WasteNames> currentBinWastes;
+    public static List<Waste.WasteNames> selectedWastes;
     public static bool isAllRecyclableSelected = true;
     public static bool isSegregateActive = false;
     public static Waste currentSegregatingWaste;
@@ -86,18 +87,43 @@ public class BinSelectUI : MonoBehaviour
         {
             Message.get.ShowMessage("Warning!", "Not all selected wastes are recyclable");
             ClearCards();
+            
             CreateBinCards(Player.currentSelectedDustbin.wastes);
 
         }
         else
         {
-            ClearCards();
-            gameObject.SetActive(false);
-            binCanvas.SetActive(false);
+            QNAManager.GetInstance().CreateQuestion(QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Recycle));
 
-            Player.DeactivateUIHelper();
             //good job! now solve this puzzle to get extra score!
         }
         isAllRecyclableSelected = true;
+    }
+
+    public void QuestionAnswered(bool status)
+    {
+        if (Player.state == Player.PlayerState.recycling)
+        {
+            if (status)
+            {
+                ClearCards();
+                gameObject.SetActive(false);
+                binCanvas.SetActive(false);
+                for (int i = 0; i < selectedWastes.Count; i++)
+                {
+                    Player.currentSelectedDustbin.RemoveWaste(selectedWastes[i]);
+                }
+                Player.DeactivateUIHelper();
+            }
+            else
+            {
+                Message.get.ShowMessage("Warning!", "Wrong Answer");
+                ClearCards();
+
+                CreateBinCards(Player.currentSelectedDustbin.wastes);
+            }
+        }
+
+
     }
 }

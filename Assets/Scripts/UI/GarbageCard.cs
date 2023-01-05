@@ -19,15 +19,16 @@ public class GarbageCard : MonoBehaviour
 
         if (Player.state == Player.PlayerState.recycling)
         {
+            BinSelectUI.selectedWastes = new List<Waste.WasteNames>();
             if (WasteAssets.Instance.GetWaste(BinSelectUI.currentBinWastes[index]).disposalType == Waste.DisposalType.recycle) //if recyclable
             {
-                Player.currentSelectedDustbin.wastes.Remove(BinSelectUI.currentBinWastes[index]);
-
-                //give score
+                BinSelectUI.selectedWastes.Add(BinSelectUI.currentBinWastes[index]);
+               
             }
             else
             {
                 BinSelectUI.isAllRecyclableSelected = false;
+                BinSelectUI.selectedWastes.Add(BinSelectUI.currentBinWastes[index]);
             }
 
             BinSelectUI.GetInstance().RemoveCard(index);

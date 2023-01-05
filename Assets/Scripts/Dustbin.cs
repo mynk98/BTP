@@ -100,10 +100,13 @@ public class Dustbin : MonoBehaviour
         }
     }
 
-    public void RemoveWaste(int index, string type)
+    public void RemoveWaste(Waste.WasteNames wasteName)
     {
         // wastes[type].RemoveAt(index);
-        print("Removing Waste");
+        if (wastes.ContainsKey(wasteName))
+        {
+            wastes.Remove(wasteName);
+        }
     }
 
     public void Recycle()

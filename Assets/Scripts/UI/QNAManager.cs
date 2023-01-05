@@ -12,6 +12,7 @@ public class QNAManager : MonoBehaviour
     public GameObject optionPrefabe;
     public GameObject optionsParent;
     public ButtonEditor buttonStyle;
+    public static bool lastQuestionStatus=false;
 
     private static QNAManager _instance;
 
@@ -27,7 +28,8 @@ public class QNAManager : MonoBehaviour
 
     private void Start()
     {
-            CreateQuestion( QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Recycle));
+        //CreateQuestion( QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Recycle));
+        gameObject.SetActive(false);
     }
 /*
     private int i;
@@ -45,6 +47,10 @@ public class QNAManager : MonoBehaviour
     public void CreateQuestion(QNAAssets.QNA qna)
     {
         question.text = qna.question;
+        /*foreach (Transform child in optionsParent.transform)
+        {
+            Destroy(child.gameObject);
+        }*/
         foreach (string option in qna.options)
         {
             GameObject optionObj = Instantiate(optionPrefabe, optionsParent.transform);
@@ -61,13 +67,20 @@ public class QNAManager : MonoBehaviour
         if (qna.answer == idx)
         {
             Debug.Log("Correct");
+            lastQuestionStatus = true;
             //optionObj.GetComponent<Button>().gameObject.
 
         }
         else
         {
             Debug.Log("Wrong");
+            lastQuestionStatus = false;
+            print(qna.answer + " " + idx);
         }
+
+        BinSelectUI.GetInstance().QuestionAnswered(lastQuestionStatus);
+
+        gameObject.SetActive(false);
     }
 
 

@@ -234,8 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wasteCanvas: {fileID: 0}
-  wasteType: 2
+  wasteType: 0
   wasteName: 0
+  disposalType: 2
 --- !u!65 &6895514427031737832
 BoxCollider:
   m_ObjectHideFlags: 0
