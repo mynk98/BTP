@@ -72,11 +72,13 @@ public class Dustbin : MonoBehaviour
             Player.DeactivateUIHelper();
             
             _playerInstance.binUI.SetActive(false);
+            XP.ChangeXP(10);
 
             if (wasteObject.wasteType.ToString() != dustbinType.ToString())
             {
                 Message.get.ShowMessage("Warning", "You chose wrong bin. It'll deduct some XP. You can go to segregation centre to put the garbage in correct bin.");
                 Player.ActivateUIHelper();
+                XP.ChangeXP(-15);
             }
 
             //Debug.Log("Added " + wasteType + " to " + dustbinType);
@@ -141,11 +143,13 @@ public class Dustbin : MonoBehaviour
             }
             else
             {
+                XP.ChangeXP(-10);
                 Message.get.ShowMessage("Warning!", "All the waste in the selected dustbin are not "+ dustbinType.ToString()+". Please go to the segregation centre to segregate wastes correctly.");
             }
         }
         else
         {
+            XP.ChangeXP(-5);
             Message.get.ShowMessage("Warning!", "Please select correct bin.");
         }
     }

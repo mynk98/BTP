@@ -21,6 +21,7 @@ public class LibraryCheckpoint : MonoBehaviour
         {
             libraryCanvas.SetActive(true);
             Player.ActivateUIHelper();
+            XP.ChangeXP(10);
             
         }
     }
