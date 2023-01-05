@@ -11,8 +11,8 @@ public class CarController : MonoBehaviour
     public Transform WheelRLtrans;
     public Transform WheelRRtrans;
     public Vector3 eulertest;
-    float maxFwdSpeed = 200;
-    float maxBwdSpeed = 100f;
+    float maxFwdSpeed = 15;
+    float maxBwdSpeed = 5;
     float gravity = 9.8f;
     private bool braked = false;
     private float maxBrakeTorque = 500;
@@ -56,6 +56,7 @@ public class CarController : MonoBehaviour
                 maxTorque = 0;
             }
             else maxTorque = fixedMaxTorque;
+           // print("speed=" + rb.velocity.magnitude + " torque: " + maxTorque);
             WheelRR.motorTorque = maxTorque * Input.GetAxis("Vertical");
             WheelRL.motorTorque = maxTorque * Input.GetAxis("Vertical");
 
