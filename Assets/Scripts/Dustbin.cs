@@ -56,9 +56,9 @@ public class Dustbin : MonoBehaviour
         Waste wasteObject = Player.currentlySelected.GetComponent<Waste>();
         string bintype = dustbinType.ToString();
 
-        /*if (wasteType == dustbinType.ToString() )*/
-        //{
-            
+        /*if (wasteObject.wasteType.ToString() == dustbinType.ToString())*/
+        {
+
             if (wastes.ContainsKey(wasteObject.wasteName))
             {
                 wastes[wasteObject.wasteName] += 1;
@@ -73,8 +73,14 @@ public class Dustbin : MonoBehaviour
             
             _playerInstance.binUI.SetActive(false);
 
+            if (wasteObject.wasteType.ToString() != dustbinType.ToString())
+            {
+                Message.get.ShowMessage("Warning", "You chose wrong bin. It'll deduct some XP. You can go to segregation centre to put the garbage in correct bin.");
+                Player.ActivateUIHelper();
+            }
+
             //Debug.Log("Added " + wasteType + " to " + dustbinType);
-        //}
+        }
     }
 
     private void SortWaste()

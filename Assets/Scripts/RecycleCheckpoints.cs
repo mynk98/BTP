@@ -8,13 +8,13 @@ public class RecycleCheckpoints : MonoBehaviour
     {
         paper,
         plastic,
-        metal
+        metal,
+        glass
     }
 
     public RecycleType type;
 
     public bool isCloseButtonPressed = false;
-    [SerializeField] GameObject recyclingCanvas;
     [SerializeField] GameObject binCanvas;
     
 
