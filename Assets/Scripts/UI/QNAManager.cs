@@ -47,10 +47,10 @@ public class QNAManager : MonoBehaviour
     public void CreateQuestion(QNAAssets.QNA qna)
     {
         question.text = qna.question;
-        /*foreach (Transform child in optionsParent.transform)
+        foreach (Transform child in optionsParent.transform)
         {
             Destroy(child.gameObject);
-        }*/
+        }
         foreach (string option in qna.options)
         {
             GameObject optionObj = Instantiate(optionPrefabe, optionsParent.transform);
@@ -83,9 +83,8 @@ public class QNAManager : MonoBehaviour
         gameObject.SetActive(false);
 
         // delete all chields of parent
-        
-
     }
+
 
 
 }
