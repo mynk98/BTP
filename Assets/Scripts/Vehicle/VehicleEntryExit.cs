@@ -10,6 +10,7 @@ public class VehicleEntryExit : MonoBehaviour
 
     public static ParticleSystem particleSystem;
     public static VehicleEntryExit get;
+    public Transform minimapCamera;
 
     [SerializeField] Player player;
 
@@ -22,7 +23,7 @@ public class VehicleEntryExit : MonoBehaviour
 
     private void Start()
     {
-        
+        minimapCamera = player.GetComponentInChildren<Camera>().transform;
         
         
     }
@@ -68,6 +69,7 @@ public class VehicleEntryExit : MonoBehaviour
             currentCar.enabled = false;
             availableVehicles.Add(currentCar);
 
+            minimapCamera.transform.parent = player.transform;
             player.Cam.gameObject.SetActive(true);
             player.transform.position = transform.GetChild(0).position;
             player.gameObject.SetActive(true);

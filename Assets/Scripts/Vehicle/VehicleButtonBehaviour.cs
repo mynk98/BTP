@@ -18,6 +18,7 @@ public class VehicleButtonBehaviour : MonoBehaviour
         GameObject player= GameObject.FindGameObjectWithTag("Player");
         Player.state = Player.PlayerState.driving;
         player.GetComponent<Player>().Cam.gameObject.SetActive(false);
+        player.GetComponentInChildren<Camera>().transform.parent = currentVehicle.transform;
         player.SetActive(false);
         VehicleCheckpoints.get.ChangeColor();
         Player.DeactivateUIHelper();
