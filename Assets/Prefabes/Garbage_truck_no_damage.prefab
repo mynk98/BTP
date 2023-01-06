@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405222035}
   - component: {fileID: 1405222034}
+  - component: {fileID: 1740528342}
   m_Layer: 0
   m_Name: Vehicle camera
   m_TagString: Untagged
@@ -63,7 +64,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -75,6 +76,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!81 &1740528342
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405222026}
+  m_Enabled: 1
 --- !u!1 &1618056304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3113,7 @@ MonoBehaviour:
   centreofmass: {fileID: 1618056305}
   type: 0
   vehicleCamera: {fileID: 1405222026}
+  currentSpot: {fileID: 0}
 --- !u!1 &3481005986733923042
 GameObject:
   m_ObjectHideFlags: 0

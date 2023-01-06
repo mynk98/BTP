@@ -81,6 +81,10 @@ public class QNAManager : MonoBehaviour
         BinSelectUI.GetInstance().QuestionAnswered(lastQuestionStatus);
 
         gameObject.SetActive(false);
+
+        // delete all chields of parent
+        
+
     }
 
 
