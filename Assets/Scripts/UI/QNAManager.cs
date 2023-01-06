@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEditor.UI;
@@ -49,31 +50,34 @@ public class QNAManager : MonoBehaviour
         question.text = qna.question;
         foreach (Transform child in optionsParent.transform)
         {
+            
             Destroy(child.gameObject);
+            
         }
-        foreach (string option in qna.options)
+        foreach (var (option, index) in qna.options.Select((value, i) => (value, i)))
         {
             GameObject optionObj = Instantiate(optionPrefabe, optionsParent.transform);
             // Get index of opotion in option parent
-            int idx = optionObj.transform.GetSiblingIndex();
             optionObj.GetComponentInChildren<TextMeshProUGUI>().text = option;
             optionObj.SetActive(true);
-            optionObj.GetComponent<Button>().onClick.AddListener(() => { CheckAnswer(qna, idx, optionObj); });
+            optionObj.GetComponent<Button>().onClick.AddListener(() => { CheckAnswer(qna, index+1, optionObj); });
+            print("Given index for option: " + index);
         }
     }
 
     private void CheckAnswer(QNAAssets.QNA qna, int idx, GameObject optionObj)
     {
+        print("ID for Option created: " + idx);
         if (qna.answer == idx)
         {
-            Debug.Log("Correct");
+            print("Correct " +  idx);
             lastQuestionStatus = true;
             //optionObj.GetComponent<Button>().gameObject.
 
         }
         else
         {
-            Debug.Log("Wrong");
+            print("Wrong " + idx);
             lastQuestionStatus = false;
             print(qna.answer + " " + idx);
         }

@@ -18,7 +18,7 @@ public class QNAAssets : MonoBehaviour
     {
         
         public string question;
-        public string[] options;
+        public List<string> options;
         public int answer;
     }
     
