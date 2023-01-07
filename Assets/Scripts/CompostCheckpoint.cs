@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CompostCheckpoint : MonoBehaviour
 {
-    public bool isCloseButtonPressed = false;
+    public static bool isCloseButtonPressed = false;
     [SerializeField] GameObject binCanvas;
 
 

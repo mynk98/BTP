@@ -137,13 +137,15 @@ public class BinSelectUI : MonoBehaviour
                 Message.get.ShowMessage("Note!", "Correct Answer");
                 binCanvas.SetActive(false);
 
-                foreach(KeyValuePair<Waste.WasteNames, int> entry in Player.currentSelectedDustbin.wastes)
+                Player.currentSelectedDustbin.wastes.Clear();
+
+                /*foreach (KeyValuePair<Waste.WasteNames, int> entry in Player.currentSelectedDustbin.wastes)
                 {
                     if (WasteAssets.Instance.GetWaste(entry.Key).wasteType == Waste.WasteType.food)
                     {
                         Player.currentSelectedDustbin.RemoveWaste(entry.Key);
                     }
-                }
+                }*/
                    
             }
             else

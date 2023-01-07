@@ -217,17 +217,17 @@ public class Dustbin : MonoBehaviour
                     print(dustbinType.ToString());
                     break;
                 }
-
-                if (isAllSameType)
-                {
-                    QNAManager.GetInstance().CreateQuestion(QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Compost));
-                }
-                else
-                {
-                    XP.ChangeXP(-10);
-                    Message.get.ShowMessage("Warning!", "All the waste in the selected dustbin are not compostable. Please go to the segregation centre to segregate wastes correctly.");
-                }
             }
+            if (isAllSameType)
+            {
+                QNAManager.GetInstance().CreateQuestion(QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Compost));
+            }
+            else
+            {
+                XP.ChangeXP(-10);
+                Message.get.ShowMessage("Warning!", "All the waste in the selected dustbin are not compostable. Please go to the segregation centre to segregate wastes correctly.");
+            }
+            
         }
         else
         {

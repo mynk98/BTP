@@ -203,6 +203,7 @@ public class Player : MonoBehaviour
     {
         if(currentSelectedRecycleCheckpoint!=null)currentSelectedRecycleCheckpoint.isCloseButtonPressed = true;
         SegregationCheckpoint.isCloseButtonPressed = true;
+        CompostCheckpoint.isCloseButtonPressed = true;
         binUI.SetActive(false);
         state = PlayerState.idle;
         DeactivateUIHelper();
