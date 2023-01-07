@@ -16,6 +16,8 @@ namespace Assets.Scripts.Network
             {
                 StartCoroutine(GetXP());
             }*/
+            //Make sure to comment this before building...
+            PlayerPrefs.DeleteAll();
         }
 
         private void Start()
@@ -57,10 +59,11 @@ namespace Assets.Scripts.Network
                 // JSONNode data = JSON.Parse(www.downloadHandler.text
                 var data = Newtonsoft.Json.JsonConvert.DeserializeObject(www.downloadHandler.text);
                 print(data);
-                System.Reflection.PropertyInfo pi = data.GetType().GetProperty("avatar");
-                PlayerPrefs.SetInt("player_avatar", (int)pi.GetValue(data, null));
+                //System.Reflection.PropertyInfo pi = data.GetType().GetProperty("avatar");
+                //PlayerPrefs.SetInt("player_avatar", (int)pi.GetValue(data, null));
                 //Debug.Log("player_xp: " + data["xp"]);
                 setEmail();
+                SceneManager.LoadScene("Game Scene", LoadSceneMode.Single);
 
                 // LoadingManager.instance.LoadGame(SceneIndexes.Login, SceneIndexes.AvatarSelection);
             }
