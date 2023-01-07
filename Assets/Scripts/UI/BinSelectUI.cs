@@ -42,6 +42,8 @@ public class BinSelectUI : MonoBehaviour
     {
         _instance = this;
         _assetManager = UIAssetManager.GetInstance();
+        selectedWastes = new List<Waste.WasteNames>();
+        gameObject.SetActive(false);
         //currentBinWastes = new List<Waste.WasteNames>() { };
     }
 
@@ -83,7 +85,11 @@ public class BinSelectUI : MonoBehaviour
 
     public void Recycle()
     {
-        if (!isAllRecyclableSelected)
+        if (BinSelectUI.selectedWastes.Count == 0)
+        {
+            Message.get.ShowMessage("Warning", "No waste selected");
+        }
+        else if (!isAllRecyclableSelected)
         {
             Message.get.ShowMessage("Warning!", "Not all selected wastes are recyclable");
             ClearCards();
@@ -113,6 +119,7 @@ public class BinSelectUI : MonoBehaviour
                 {
                     Player.currentSelectedDustbin.RemoveWaste(selectedWastes[i]);
                 }
+                Message.get.ShowMessage("Note!", "Correct Answer");
                 Player.DeactivateUIHelper();
             }
             else
@@ -121,6 +128,27 @@ public class BinSelectUI : MonoBehaviour
                 ClearCards();
 
                 CreateBinCards(Player.currentSelectedDustbin.wastes);
+            }
+        }
+        else if (Player.state == Player.PlayerState.composting)
+        {
+            if (status)
+            {
+                Message.get.ShowMessage("Note!", "Correct Answer");
+                binCanvas.SetActive(false);
+
+                foreach(KeyValuePair<Waste.WasteNames, int> entry in Player.currentSelectedDustbin.wastes)
+                {
+                    if (WasteAssets.Instance.GetWaste(entry.Key).wasteType == Waste.WasteType.food)
+                    {
+                        Player.currentSelectedDustbin.RemoveWaste(entry.Key);
+                    }
+                }
+                   
+            }
+            else
+            {
+                Message.get.ShowMessage("Warning!", "Wrong Answer");
             }
         }
 

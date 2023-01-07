@@ -49,7 +49,8 @@ public class Player : MonoBehaviour
         sorting,
         driving,
         recycling,
-        segregating
+        segregating,
+        composting
     };
 
     public static PlayerState state=PlayerState.idle;
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         camera = Cam.GetComponent<Camera>();
+        binUI.SetActive(false);
         DeactivateUIHelper();
     }
 
@@ -190,6 +192,8 @@ public class Player : MonoBehaviour
 
     public static void DeactivateUIHelper()
     {
+        if (BinSelectUI.GetInstance().gameObject.active) return;
+        if (BinSelectUI.GetInstance().binCanvas.active) return;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;

@@ -30,7 +30,12 @@ public class Dustbin : MonoBehaviour
     public void OnButtonPress()
     {
         Player.currentSelectedDustbin=this;
-        if (Player.state == Player.PlayerState.collecting)
+
+        if (wastes.Count == 0 && Player.state != Player.PlayerState.collecting)
+        {
+            Message.get.ShowMessage("Note", "No garbage in the selected bin");
+        }
+        else if (Player.state == Player.PlayerState.collecting)
         {
             AddWaste();
         }
@@ -48,6 +53,10 @@ public class Dustbin : MonoBehaviour
             if (!BinSelectUI.isSegregateActive) Segregate();
             else ChooseBinToSegregate();
 
+        }
+        else if (Player.state == Player.PlayerState.composting)
+        {
+            Compost();
         }
     }
     
@@ -69,8 +78,10 @@ public class Dustbin : MonoBehaviour
             }
             Player.currentlySelected.SetActive(false);
             Player.state = (int)Player.PlayerState.idle;
-            Player.DeactivateUIHelper();
-            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1;
+
             _playerInstance.binUI.SetActive(false);
             XP.ChangeXP(10);
 
@@ -190,6 +201,39 @@ public class Dustbin : MonoBehaviour
         BinSelectUI.isSegregateActive = false;
         BinSelectUI.GetInstance().binCanvasCloseButton.SetActive(true);
         BinSelectUI.GetInstance().binCanvas.GetComponentInChildren<TMPro.TMP_Text>().text = "Select the bin whoose garbage you want to segregate";
+    }
+
+    public void Compost()
+    {
+        if (dustbinType == DustbinType.food)
+        {
+            bool isAllSameType = true;
+            foreach (var waste in wastes)
+            {
+                if (WasteAssets.Instance.GetWaste(waste.Key).wasteType.ToString() != dustbinType.ToString())
+                {
+                    isAllSameType = false;
+                    print(WasteAssets.Instance.GetWaste(waste.Key).wasteType.ToString());
+                    print(dustbinType.ToString());
+                    break;
+                }
+
+                if (isAllSameType)
+                {
+                    QNAManager.GetInstance().CreateQuestion(QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Compost));
+                }
+                else
+                {
+                    XP.ChangeXP(-10);
+                    Message.get.ShowMessage("Warning!", "All the waste in the selected dustbin are not compostable. Please go to the segregation centre to segregate wastes correctly.");
+                }
+            }
+        }
+        else
+        {
+            XP.ChangeXP(-5);
+            Message.get.ShowMessage("Warning!", "Please select correct bin.");
+        }
     }
 }
         
