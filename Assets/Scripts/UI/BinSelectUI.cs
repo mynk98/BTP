@@ -25,6 +25,9 @@ public class BinSelectUI : MonoBehaviour
     public static bool isSegregateActive = false;
     public static Waste currentSegregatingWaste;
 
+    [SerializeField] GameObject minimap;
+    bool isFirstTime = true;
+
     public static BinSelectUI GetInstance()
     
     {
@@ -51,6 +54,24 @@ public class BinSelectUI : MonoBehaviour
     void Update()
     {
         //_cardImage.texture = UIAssetManager.GetInstance().GetImage(Player.currentlySelected.GetComponent<Waste>().wasteName);
+    }
+
+    private void OnEnable()
+    {
+        if (isFirstTime)
+        {
+            isFirstTime = false;
+            return;
+        }
+        minimap.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        if (Player.state == Player.PlayerState.sorting)
+        {
+            minimap.SetActive(true);
+        }
     }
 
     public void CreateBinCards(Dictionary<Waste.WasteNames, int> wastes)
@@ -119,14 +140,14 @@ public class BinSelectUI : MonoBehaviour
                 {
                     Player.currentSelectedDustbin.RemoveWaste(selectedWastes[i]);
                 }
-                Message.get.ShowMessage("Note!", "Correct Answer");
+                Message.get.ShowMessage("Note!", "Correct Answer! Selected waste has been recycled");
                 Player.DeactivateUIHelper();
             }
             else
             {
-                Message.get.ShowMessage("Warning!", "Wrong Answer");
+                Message.get.ShowMessage("Warning!", "Wrong Answer!\n-30 XP");
                 ClearCards();
-
+                XP.ChangeXP(-30);
                 CreateBinCards(Player.currentSelectedDustbin.wastes);
             }
         }
@@ -134,7 +155,7 @@ public class BinSelectUI : MonoBehaviour
         {
             if (status)
             {
-                Message.get.ShowMessage("Note!", "Correct Answer");
+                Message.get.ShowMessage("Note!", "Correct Answer! Selected waste has been put into compost.");
                 binCanvas.SetActive(false);
 
                 Player.currentSelectedDustbin.wastes.Clear();
@@ -150,7 +171,8 @@ public class BinSelectUI : MonoBehaviour
             }
             else
             {
-                Message.get.ShowMessage("Warning!", "Wrong Answer");
+                Message.get.ShowMessage("Warning!", "Wrong Answer!\n-30 XP");
+                XP.ChangeXP(-30);
             }
         }
 

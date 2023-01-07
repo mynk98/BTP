@@ -31,7 +31,7 @@ public class Dustbin : MonoBehaviour
     {
         Player.currentSelectedDustbin=this;
 
-        if (wastes.Count == 0 && Player.state != Player.PlayerState.collecting)
+        if (wastes.Count == 0 && Player.state != Player.PlayerState.collecting && !BinSelectUI.isSegregateActive)
         {
             Message.get.ShowMessage("Note", "No garbage in the selected bin");
         }
@@ -87,7 +87,7 @@ public class Dustbin : MonoBehaviour
 
             if (wasteObject.wasteType.ToString() != dustbinType.ToString())
             {
-                Message.get.ShowMessage("Warning", "You chose wrong bin. It'll deduct some XP. You can go to segregation centre to put the garbage in correct bin.");
+                Message.get.ShowMessage("Warning", "You chose wrong bin.\n-5 XP\n. You can go to segregation centre to put the garbage in correct bin.");
                 Player.ActivateUIHelper();
                 XP.ChangeXP(-15);
             }
