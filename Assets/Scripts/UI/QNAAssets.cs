@@ -50,8 +50,10 @@ public class QNAAssets : MonoBehaviour
         {
             if(q.category == category)
             {
-                UnityEngine.Random.seed = 54;
-                returnQ =  q.qnas[UnityEngine.Random.Range(0, q.qnas.Length)];
+                int rint = UnityEngine.Random.Range(0, q.qnas.Length);
+                print("q.qnas.Length : " + q.qnas.Length);
+                print(rint);
+                returnQ =  q.qnas[rint];
             }
         }
 
