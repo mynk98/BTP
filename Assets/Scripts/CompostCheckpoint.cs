@@ -6,6 +6,7 @@ public class CompostCheckpoint : MonoBehaviour
 {
     public static bool isCloseButtonPressed = false;
     [SerializeField] GameObject binCanvas;
+    [SerializeField] GameObject minimap;
 
 
     public static CompostCheckpoint get;
@@ -34,6 +35,7 @@ public class CompostCheckpoint : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) return;
         if (other.tag == "Player" && Player.state != Player.PlayerState.driving)
         {
+            minimap.SetActive(false);
             binCanvas.SetActive(true);
             binCanvas.GetComponentInChildren<TMPro.TMP_Text>().text = "Select the bin whoose garbage you want to Compost";
             Player.state = Player.PlayerState.composting;

@@ -16,6 +16,7 @@ public class RecycleCheckpoints : MonoBehaviour
 
     public bool isCloseButtonPressed = false;
     [SerializeField] GameObject binCanvas;
+    [SerializeField] GameObject minimap;
     
 
     public static RecycleCheckpoints get;
@@ -44,6 +45,7 @@ public class RecycleCheckpoints : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) return;
         if (other.tag == "Player" && Player.state != Player.PlayerState.driving)
         {
+            minimap.SetActive(false);
             binCanvas.SetActive(true);
             binCanvas.GetComponentInChildren<TMPro.TMP_Text>().text = "Select the bin whoose garbage you want to recycle";
             Player.state = Player.PlayerState.recycling;

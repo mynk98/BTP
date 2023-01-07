@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     [Header("UI")]
     [SerializeField] public GameObject binUI;
     [SerializeField] public GameObject binSelectUI;
+    [SerializeField] public GameObject minimap;
 
     public enum PlayerState
     {
@@ -204,6 +205,7 @@ public class Player : MonoBehaviour
         if(currentSelectedRecycleCheckpoint!=null)currentSelectedRecycleCheckpoint.isCloseButtonPressed = true;
         SegregationCheckpoint.isCloseButtonPressed = true;
         CompostCheckpoint.isCloseButtonPressed = true;
+        minimap.SetActive(true);
         binUI.SetActive(false);
         state = PlayerState.idle;
         DeactivateUIHelper();
