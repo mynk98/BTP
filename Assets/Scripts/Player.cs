@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
     [SerializeField] public GameObject minimap;
     [SerializeField] public GameObject bigmap;
 
+    public GameObject minimapCamera;
+
     public enum PlayerState
     {
         idle,
@@ -171,16 +173,18 @@ public class Player : MonoBehaviour
             }
             print("Presed B, State: " +  state);
         }
-        if (Input.GetKey(KeyCode.M))
+
+        /*if (Input.GetKey(KeyCode.M))
         {
             minimap.SetActive(false);
             bigmap.SetActive(true);
+            
         }
         if (Input.GetKeyUp(KeyCode.M))
         {
             minimap.SetActive(true);
             bigmap.SetActive(false);
-        }
+        }*/
     }
 
     void HandleGravityAndJump()

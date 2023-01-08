@@ -141,6 +141,7 @@ public class BinSelectUI : MonoBehaviour
                     Player.currentSelectedDustbin.RemoveWaste(selectedWastes[i]);
                 }
                 Message.get.ShowMessage("Note!", "Correct Answer! Selected waste has been recycled");
+                XP.ChangeXP(100);
                 Player.DeactivateUIHelper();
             }
             else
@@ -157,6 +158,7 @@ public class BinSelectUI : MonoBehaviour
             {
                 Message.get.ShowMessage("Note!", "Correct Answer! Selected waste has been put into compost.");
                 binCanvas.SetActive(false);
+                XP.ChangeXP(100);
 
                 Player.currentSelectedDustbin.wastes.Clear();
 

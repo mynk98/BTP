@@ -25,7 +25,7 @@ public class TestMessage : MonoBehaviour
             " correct destination and correctly processed.", "Li"));
 
         dialogTexts.Add(new DialogData("The city is littered with spazzatura. I'm announcing a competion. The players will have to collect" +
-            "the garbage and correctly dispose off at correct disposal centres.", "Li"));
+            " the garbage and correctly dispose off at correct disposal centres.", "Li"));
 
         dialogTexts.Add(new DialogData("I'm on it mayor. I'll save the city. But what are the disposal places in the city?", "Sa"));
 

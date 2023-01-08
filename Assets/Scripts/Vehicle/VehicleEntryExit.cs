@@ -70,6 +70,7 @@ public class VehicleEntryExit : MonoBehaviour
             availableVehicles.Add(currentCar);
 
             minimapCamera.transform.parent = player.transform;
+            minimapCamera.transform.localPosition = new Vector3(0, minimapCamera.transform.localPosition.y, 0);
             player.Cam.gameObject.SetActive(true);
             player.transform.position = transform.GetChild(0).position;
             player.gameObject.SetActive(true);

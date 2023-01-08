@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
     {
         isTimerRunning = true;
         timeElapsed = 0;
-        currentTime = 600;
+        currentTime = 1200;
 
         /*startMin = int.Parse(System.DateTime.Now.ToString().Substring(14, 2));
         startSec = int.Parse(System.DateTime.Now.ToString().Substring(17, 2));

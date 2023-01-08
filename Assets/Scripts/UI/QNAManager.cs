@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEditor.UI;
+//using UnityEditor.UI;
 using UnityEngine.UI;
 
 public class QNAManager : MonoBehaviour
@@ -12,10 +12,12 @@ public class QNAManager : MonoBehaviour
     public TextMeshProUGUI question;
     public GameObject optionPrefabe;
     public GameObject optionsParent;
-    public ButtonEditor buttonStyle;
+    //public ButtonEditor buttonStyle;
     public static bool lastQuestionStatus=false;
 
     private static QNAManager _instance;
+
+    public GameObject binUI;
 
     public static QNAManager GetInstance()
     {
@@ -32,17 +34,26 @@ public class QNAManager : MonoBehaviour
         //CreateQuestion( QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Recycle));
         gameObject.SetActive(false);
     }
-/*
-    private int i;
-    private void LateUpdate()
-    {
 
-        if (i == 0)
+    private void OnEnable()
+    {
+        binUI.SetActive(false);
+    }
+    private void OnDisable()
+    {
+        binUI.SetActive(true);
+    }
+    /*
+        private int i;
+        private void LateUpdate()
         {
-            CreateQuestion( QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Recycle));
-        }
-        i += 1;
-    }*/
+
+            if (i == 0)
+            {
+                CreateQuestion( QNAAssets.GetInstance().GetQuestion(QNAAssets.Categories.Recycle));
+            }
+            i += 1;
+        }*/
 
 
     public void CreateQuestion(QNAAssets.QNA qna)
