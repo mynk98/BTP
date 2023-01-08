@@ -63,7 +63,7 @@ namespace Assets.Scripts.Network
                 //PlayerPrefs.SetInt("player_avatar", (int)pi.GetValue(data, null));
                 //Debug.Log("player_xp: " + data["xp"]);
                 setEmail();
-                SceneManager.LoadScene("Game Scene", LoadSceneMode.Single);
+                SceneManager.LoadScene(1);
 
                 // LoadingManager.instance.LoadGame(SceneIndexes.Login, SceneIndexes.AvatarSelection);
             }
