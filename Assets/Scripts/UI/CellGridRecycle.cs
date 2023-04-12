@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CellGridRecycle : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class CellGridRecycle : MonoBehaviour
     {
         public string itemName;
         public Sprite itemImage;
-        public List<int> exits;
+        public int exit;
     }
 
     public Cell cell;
@@ -19,24 +20,33 @@ public class CellGridRecycle : MonoBehaviour
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(SetCell);
-        cell.exits = new List<int>() { };
     }
 
     public void SetCell()
     {
 
         transform.rotation = Quaternion.identity;
-        cell.itemImage = InventoryRecycle.selectedItem.itemImage;
-        cell.itemName = InventoryRecycle.selectedItem.itemName;
 
-        int exitsCount = InventoryRecycle.selectedItem.exits.Count;
-
-        for(int i = 0; i < exitsCount; i++)
+        ItemInventory item;
+        if (InventoryRecycle.selectedItem == null)
         {
-            cell.exits.Add(InventoryRecycle.selectedItem.exits[i]);
+            cell.itemImage = GetComponentInParent<GridRecycle>().defaultImage;
+            cell.itemName = "";
+            cell.exit = 0;
         }
+        else
+        {
+            item= InventoryRecycle.selectedItem.GetComponent<ItemInventory>();
+            cell.itemImage = item.itemImage;
+            cell.itemName = item.itemName;
+            cell.exit = (item.exit);
+        }
+        
+        
+        print("cell: "+cell.exit);
+        //print("item: "+item.exit);
 
-        GetComponent<Image>().sprite = InventoryRecycle.selectedItem.itemImage;
+        GetComponent<Image>().sprite = cell.itemImage;
         GridRecycle.selectedCell = GetComponent<Button>();
     }
 }

@@ -8,6 +8,7 @@ public class GridRecycle : MonoBehaviour
     
     public static Button[] cells;
     public static Button selectedCell;
+    public Sprite defaultImage;
 
 
     private void Start()
@@ -17,17 +18,41 @@ public class GridRecycle : MonoBehaviour
 
     public void RotateCell()
     {
-        selectedCell.transform.Rotate(0, 0, 90);
-        for(int i = 0; i < selectedCell.GetComponent<CellGridRecycle>().cell.exits.Count; i++)
+        if (selectedCell == null) return;
+        selectedCell.transform.Rotate(0, 0, -90);
+        
+        if (selectedCell.GetComponent<CellGridRecycle>().cell.exit == 1) 
         {
-            if (selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] == 1) selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] = Rows;
-            if (selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] == Rows) selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] = -1;
-            if (selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] == -1) selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] = -Rows;
-            if (selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] == -Rows) selectedCell.GetComponent<CellGridRecycle>().cell.exits[i] = 1;
+            selectedCell.GetComponent<CellGridRecycle>().cell.exit = Rows;
+            print(1);
         }
+        else if (selectedCell.GetComponent<CellGridRecycle>().cell.exit == Rows) 
+        {
+            selectedCell.GetComponent<CellGridRecycle>().cell.exit = -1;
+            print(2);
+        }
+        else if (selectedCell.GetComponent<CellGridRecycle>().cell.exit == -1) 
+        {
+            selectedCell.GetComponent<CellGridRecycle>().cell.exit = -Rows;
+            print(3);
+        }
+        else if (selectedCell.GetComponent<CellGridRecycle>().cell.exit == -Rows) 
+        {
+            selectedCell.GetComponent<CellGridRecycle>().cell.exit = 1;
+            print(4);
+        } 
+
+        print("cell after rotation: "+selectedCell.GetComponent<CellGridRecycle>().cell.exit);
     }
 
-
+    public void DeleteCell()
+    {
+        if (selectedCell == null) return;
+        selectedCell.GetComponent<CellGridRecycle>().cell.exit = 0;
+        selectedCell.GetComponent<CellGridRecycle>().cell.itemImage = defaultImage;
+        selectedCell.GetComponent<CellGridRecycle>().cell.itemName = "";
+        selectedCell.GetComponent<Image>().sprite = defaultImage;
+    }
 
 
 }
