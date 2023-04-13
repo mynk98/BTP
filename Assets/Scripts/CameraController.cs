@@ -17,36 +17,27 @@ public class CameraController : MonoBehaviour
     public float height;
     public float sensivity = 4.0f;
 
-    private bool hasPlayer = false;
-
 
     // Start is called before the first frame update
     void Start()
     {
 
-        
-        
 
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if(Player)
-        {
-            currentX += Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
-            currentY -= Input.GetAxis("Mouse Y") * sensivity * Time.deltaTime;
 
-            currentY = Mathf.Clamp(currentY, YMin, YMax);
+        currentX += Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
+        currentY -= Input.GetAxis("Mouse Y") * sensivity * Time.deltaTime;
 
-            Vector3 Direction = new Vector3(0, 0, -distance);
-            Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-            transform.position = lookAt.position + rotation * Direction;
+        currentY = Mathf.Clamp(currentY, YMin, YMax);
 
         Vector3 Direction = new Vector3(0, 0, -distance);
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
         transform.position = lookAt.position + rotation * Direction;
 
-        transform.LookAt(lookAt.position+new Vector3(0,height,0));
+        transform.LookAt(lookAt.position + new Vector3(0, height, 0));
     }
 }
