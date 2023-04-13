@@ -42,6 +42,9 @@ public class InventoryRecycle : MonoBehaviour
 
     void OnButtonClick()
     {
+        if (selectedItem != null) selectedItem.GetComponent<Outline>().enabled = false;
+        
         selectedItem = EventSystem.current.currentSelectedGameObject;
+        selectedItem.GetComponent<Outline>().enabled = true;
     }
 }

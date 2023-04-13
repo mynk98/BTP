@@ -24,29 +24,36 @@ public class CellGridRecycle : MonoBehaviour
 
     public void SetCell()
     {
+        GridRecycle.selectedCell = GetComponent<Button>();
 
-        transform.rotation = Quaternion.identity;
-
-        ItemInventory item;
         if (InventoryRecycle.selectedItem == null)
         {
             cell.itemImage = GetComponentInParent<GridRecycle>().defaultImage;
             cell.itemName = "";
             cell.exit = 0;
         }
+        else if(InventoryRecycle.selectedItem.transform.parent.gameObject.tag=="buttons panel")
+        {
+            GetComponentInParent<GridRecycle>().ButtonPressed();
+        }
         else
         {
-            item= InventoryRecycle.selectedItem.GetComponent<ItemInventory>();
+            transform.rotation = Quaternion.identity;
+            ItemInventory item = InventoryRecycle.selectedItem.GetComponent<ItemInventory>();
             cell.itemImage = item.itemImage;
             cell.itemName = item.itemName;
-            cell.exit = (item.exit);
+            cell.exit = item.exit;
+
+            GetComponent<Image>().sprite = cell.itemImage;
+            GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1f);
         }
+
         
-        
+
         print("cell: "+cell.exit);
         //print("item: "+item.exit);
 
-        GetComponent<Image>().sprite = cell.itemImage;
-        GridRecycle.selectedCell = GetComponent<Button>();
+        
+
     }
 }
