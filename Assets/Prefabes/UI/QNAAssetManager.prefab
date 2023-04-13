@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8582352884395504373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3470665310375268386}
+  - component: {fileID: 3286384902783259729}
+  m_Layer: 0
+  m_Name: QNAAssetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3470665310375268386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582352884395504373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1001.3828, y: -1240.0529, z: 59.96048}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3286384902783259729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582352884395504373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ad501bbca437f41a3768652a14e231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qnas:
+  - category: 0
+    qnas:
+    - question: 'Which of these plastic waste is not recyclable:'
+      options:
+      - Candy Wrappers
+      - Plastic Bottles
+      - Plastic Bucket
+      - Shampoo Bottles
+      answer: 1
+  - category: 0
+    qnas:
+    - question: Which of these plastic waste is recyclable?
+      options:
+      - Plastic plates
+      - Pvc Plastic wastes
+      - Plastic cutlery
+      - HDPE Plastic wastes
+      answer: 4
+  - category: 0
+    qnas:
+    - question: Why can't we recycle bakelite plastic waste?
+      options:
+      - Too small to segregate
+      - Too lightweight to segregate in recycling industries made for separating
+        heavy plastics and bottles.
+      - Thermoset plastics are cross-linked to form an irreversible chemical bond.
+        They cannot be re-formed and are non-recyclable.
+      answer: 3
+  - category: 0
+    qnas:
+    - question: Which of these is not a stage in plastic recycling?
+      options:
+      - Sorting + categorizing
+      - Washing
+      - Shredding
+      - Cullet production
+      answer: 4
+  - category: 1
+    qnas:
+    - question: Which of these is not a stage in plastic recycling?
+      options:
+      - Sorting + categorizing
+      - Washing
+      - Shredding
+      - Cullet production
+      answer: 4

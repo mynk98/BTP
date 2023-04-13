@@ -11,6 +11,8 @@ namespace XEntity.Demo
 
         private Rigidbody rb;
         private Vector2 input;
+        public Transform Cam;
+        Vector3 Movement;
 
         private void Awake() 
         {
@@ -19,12 +21,16 @@ namespace XEntity.Demo
 
         private void Update() 
         {
-            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed;
+            float Horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            float Vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+            Movement = Cam.transform.right * Horizontal + Cam.transform.forward * Vertical;
+            //input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed;
         }
 
         private void FixedUpdate() 
         {
-            rb.velocity = new Vector3(input.x, rb.velocity.y, input.y);
+            rb.velocity = Movement;
         }
     }
 }

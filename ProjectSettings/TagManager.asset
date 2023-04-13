@@ -3,15 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - waste
+  - Vehicle
+  - Vehicle Canvas
+  - buttons panel
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Truck
   - Water
   - UI
-  - 
+  - Minimap
   - 
   - 
   - 
