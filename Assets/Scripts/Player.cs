@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
 
     public GameObject minimapCamera;
 
+    public GameObject arrow;
+    public GameObject initialTargetWaste;
+    public bool isInitialWasteTargetted=false;
+
     public enum PlayerState
     {
         idle,
@@ -114,6 +118,8 @@ public class Player : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
+                    arrow.SetActive(false);
+                    isInitialWasteTargetted = true;
                     binUI.SetActive(true);
                     binUI.GetComponentInChildren<TMPro.TMP_Text>().text = "Choose the correct trash bin to put in garbage.";
                     currentlySelected = currentFocussedWaste;
@@ -131,7 +137,14 @@ public class Player : MonoBehaviour
                 focusFlag = false;
             }
         }
+
+        if (!isInitialWasteTargetted)
+        {
+            arrow.transform.rotation= Quaternion.LookRotation(initialTargetWaste.transform.position - arrow.transform.position,Vector3.up);
+        }
     }
+
+    
 
     private void HandleMovement()
     {
@@ -208,8 +221,8 @@ public class Player : MonoBehaviour
 
     public static void DeactivateUIHelper()
     {
-        if (BinSelectUI.GetInstance().gameObject.active) return;
-        if (BinSelectUI.GetInstance().binCanvas.active) return;
+        if (BinSelectUI.GetInstance().gameObject.activeInHierarchy) return;
+        if (BinSelectUI.GetInstance().binCanvas.activeInHierarchy) return;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;

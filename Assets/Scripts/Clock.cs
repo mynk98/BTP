@@ -35,7 +35,7 @@ public class Clock : MonoBehaviour
                 timeText.text = min.ToString() + " : " + sec;
             }
         }
-        Timer.StartTimer();
+        //Timer.StartTimer();
     }
 
     // Update is called once per frame

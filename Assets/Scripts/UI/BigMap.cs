@@ -7,6 +7,11 @@ public class BigMap : MonoBehaviour
     public GameObject minimap;
     public GameObject bigmap;
 
+    private void Start()
+    {
+        minimap.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update()
     {
