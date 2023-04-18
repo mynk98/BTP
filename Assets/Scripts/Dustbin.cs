@@ -20,7 +20,7 @@ public class Dustbin : MonoBehaviour
     public Dictionary<Waste.WasteNames, int> wastes = new Dictionary<Waste.WasteNames, int>();
 
     private Player _playerInstance;
-
+    static bool isFirstCorrect = true;
 
     private void Awake()
     {
@@ -90,6 +90,11 @@ public class Dustbin : MonoBehaviour
                 Message.get.ShowMessage("Warning", "You chose wrong bin.\n-5 XP\n. You can go to segregation centre to put the garbage in correct bin.");
                 Player.ActivateUIHelper();
                 XP.ChangeXP(-15);
+            }
+            else if (isFirstCorrect)
+            {
+                Message.get.ShowMessage("Correct!", "You chose the correct bin.\nYou'll be rewarded 10 XP for every time you put garbage in the correct bin.");
+                isFirstCorrect = false;
             }
 
             //Debug.Log("Added " + wasteType + " to " + dustbinType);

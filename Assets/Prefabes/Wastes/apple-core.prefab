@@ -112,10 +112,10 @@ GameObject:
   - component: {fileID: 6736419520085543979}
   - component: {fileID: 6736419520082119691}
   - component: {fileID: 6736419520083250891}
-  - component: {fileID: 6736419520085415636}
   - component: {fileID: 3282611424488088024}
   - component: {fileID: -1441244843736519720}
   - component: {fileID: -3936857512008824047}
+  - component: {fileID: 2923543524697259738}
   m_Layer: 0
   m_Name: apple-core
   m_TagString: waste
@@ -191,20 +191,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6736419520085415636
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736419520085446667}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 056b605250a8ea74e9586805eb09a503, type: 3}
 --- !u!114 &3282611424488088024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,13 +230,26 @@ Rigidbody:
   m_GameObject: {fileID: 6736419520085446667}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2923543524697259738
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736419520085446667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09247023, y: 0.14146563, z: 0.09249413}
+  m_Center: {x: 0.000008599833, y: 0.07407592, z: 0.0000042542815}
 --- !u!1 &8658761144947060339
 GameObject:
   m_ObjectHideFlags: 0
