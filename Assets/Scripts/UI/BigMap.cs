@@ -10,19 +10,23 @@ public class BigMap : MonoBehaviour
     private void Start()
     {
         minimap.SetActive(true);
+        bigmap.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) && !bigmap.activeInHierarchy)
         {
+            Player.ActivateUIHelper();
             minimap.SetActive(false);
             bigmap.SetActive(true);
+            print("m");
 
         }
-        if (Input.GetKeyUp(KeyCode.M))
+        else if (Input.GetKeyDown(KeyCode.M) && bigmap.activeInHierarchy)
         {
+            Player.DeactivateUIHelper();
             minimap.SetActive(true);
             bigmap.SetActive(false);
         }
