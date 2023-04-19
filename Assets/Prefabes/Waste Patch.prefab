@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 921935380397429656}
   - component: {fileID: 921935380397429657}
   - component: {fileID: 921935380397429658}
+  - component: {fileID: 437189363643821136}
   m_Layer: 6
   m_Name: Waste Patch
   m_TagString: Untagged
@@ -101,6 +102,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &437189363643821136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921935380397429660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9bf42531e22164097fe2d36d3c3607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wasteAreaRange: 50
 --- !u!1 &921935382179346104
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,5 +212,5 @@ MonoBehaviour:
   - {fileID: -5791928730180579922, guid: da3e1ddc94dfc431b8d3039c6c1db3f9, type: 3}
   - {fileID: 8559761545179643582, guid: 9a33cf4e45bbf4d7a876bb8606c3ada2, type: 3}
   - {fileID: 9220303397154195669, guid: c3ebe9281a40ef8498e007640830a030, type: 3}
-  numberOfWastes: 20
-  wasteAreaRange: 5
+  numberOfWastes: 25
+  wasteAreaRange: 50

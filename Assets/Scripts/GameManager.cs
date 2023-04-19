@@ -1,20 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     GameObject messageBox;
+    [SerializeField] GameObject waste;
+    public Slider wasteSlider;
 
+    public static GameManager get;
     bool firstWaste = true;
-    
+    public static int totatWasteInCity;
+    WastePatch[] wastePatches;
+
+
+    private void Awake()
+    {
+        get = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(ShowInitialMessage());
+        wastePatches = waste.GetComponentsInChildren<WastePatch>();
+        foreach(var item in wastePatches)
+        {
+            totatWasteInCity+=item.wasteAreaRange/2;
+        }
+        print(totatWasteInCity);
+        print(wastePatches.Length);
+        wasteSlider.maxValue = totatWasteInCity;
+        wasteSlider.value = 0;
     }
 
    
@@ -47,6 +67,11 @@ public class GameManager : MonoBehaviour
         messageBox.SetActive(false);
         StopAllCoroutines();
         
+    }
+
+    public void UpdateWasteSlider()
+    {
+        wasteSlider.value += 1;
     }
 
 

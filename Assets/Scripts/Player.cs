@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
 
     public GameObject arrow;
     public GameObject initialTargetWaste;
+    //GameObject initialTargetWaste;
     public bool isInitialWasteTargetted=false;
 
     public enum PlayerState

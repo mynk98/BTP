@@ -77,6 +77,8 @@ public class Dustbin : MonoBehaviour
                 wastes.Add(wasteObject.wasteName, 1);
             }
             Player.currentlySelected.SetActive(false);
+            Player.currentlySelected.GetComponentInParent<WasteGenerator>().UpdateColor();
+            GameManager.get.UpdateWasteSlider();
             Player.state = (int)Player.PlayerState.idle;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

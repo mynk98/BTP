@@ -7,23 +7,27 @@ public class WasteGenerator : MonoBehaviour
 {
     [SerializeField]
     List<Waste> wastes;
-    public int numberOfWastes;
+    [HideInInspector]public int numberOfWastes;
     int randiWaste;
     int randiX;
     int randiY;
     Canvas canvas;
 
-    int currentNumOfWastes;
+    int patchColorIntensity;
+    int currentNumberofWastes;
 
-    public int wasteAreaRange=20;
+    [HideInInspector] public int wasteAreaRange;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentNumOfWastes = numberOfWastes;
+        wasteAreaRange = GetComponentInParent<WastePatch>().wasteAreaRange;
+        numberOfWastes = wasteAreaRange / 2;
+        patchColorIntensity = numberOfWastes*2;
+        currentNumberofWastes = numberOfWastes;
         canvas = GetComponentInParent<Canvas>();
         canvas.GetComponent<RectTransform>().sizeDelta = new Vector2(wasteAreaRange, wasteAreaRange);
-        GetComponent<Image>().color= new Color(1, 0, 0,(float)numberOfWastes/wasteAreaRange);
+        GetComponent<Image>().color= new Color(1, 0, 0,(float)(patchColorIntensity)/ wasteAreaRange);
         for (int i = 0; i < numberOfWastes; i++)
         {
             randiWaste = Random.Range(0, wastes.Count);
@@ -38,8 +42,10 @@ public class WasteGenerator : MonoBehaviour
 
     public void UpdateColor()
     {
-        currentNumOfWastes -= 1;
-        GetComponent<Image>().color = new Color(1, 0, 0, (float)numberOfWastes / wasteAreaRange);
+        patchColorIntensity -= 1;
+        currentNumberofWastes -= 1;
+        if (currentNumberofWastes == 0) patchColorIntensity = 0;
+        GetComponent<Image>().color = new Color(1, 0, 0, (float)(patchColorIntensity) /wasteAreaRange);
     }
 
 }
