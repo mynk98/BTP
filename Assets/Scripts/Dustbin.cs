@@ -22,6 +22,7 @@ public class Dustbin : MonoBehaviour
     private Player _playerInstance;
     static bool isFirstCorrect = true;
 
+
     private void Awake()
     {
         _playerInstance = Player.GetInstance();
@@ -242,5 +243,6 @@ public class Dustbin : MonoBehaviour
             Message.get.ShowMessage("Warning!", "Please select correct bin.");
         }
     }
+
 }
         

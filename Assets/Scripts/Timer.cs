@@ -19,27 +19,12 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (isTimerRunning)
-        {
-            timeElapsed = ((int.Parse(System.DateTime.Now.ToString().Substring(0, 2))-startDay)*24*60*60 +
-                (int.Parse(System.DateTime.Now.ToString().Substring(11, 2)) - startHr) * 60 * 60) +
-                ((int.Parse(System.DateTime.Now.ToString().Substring(14, 2)) - startMin) * 60) +
-                (int.Parse(System.DateTime.Now.ToString().Substring(17, 2)) - startSec);
-            if (timeElapsed >= 1)
-            {
-                currentTime += timeElapsed;
-                startMin = int.Parse(System.DateTime.Now.ToString().Substring(14, 2));
-                startSec = int.Parse(System.DateTime.Now.ToString().Substring(17, 2));
-                startHr = int.Parse(System.DateTime.Now.ToString().Substring(11, 2));
-            }
-        }*/
-
         if (isTimerRunning)
         {
             timeElapsed += Time.unscaledDeltaTime;
             if (timeElapsed >= 1)
             {
-                currentTime -= timeElapsed;
+                currentTime += timeElapsed;
                 timeElapsed = 0;
             }
         }
@@ -51,14 +36,7 @@ public class Timer : MonoBehaviour
     {
         isTimerRunning = true;
         timeElapsed = 0;
-        currentTime = 1200;
-
-        /*startMin = int.Parse(System.DateTime.Now.ToString().Substring(14, 2));
-        startSec = int.Parse(System.DateTime.Now.ToString().Substring(17, 2));
-        startHr = int.Parse(System.DateTime.Now.ToString().Substring(11, 2));
-        startDay = int.Parse(System.DateTime.Now.ToString().Substring(0, 2));*/
-        //startMonth=System.DateTime.m
-
+        currentTime = 0;
     }
 
     public static void StopTimer()

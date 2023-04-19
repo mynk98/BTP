@@ -22,11 +22,12 @@ public class WasteGenerator : MonoBehaviour
     void Start()
     {
         wasteAreaRange = GetComponentInParent<WastePatch>().wasteAreaRange;
+        //print(wasteAreaRange);
         numberOfWastes = wasteAreaRange / 2;
         patchColorIntensity = numberOfWastes*2;
         currentNumberofWastes = numberOfWastes;
-        canvas = GetComponentInParent<Canvas>();
-        canvas.GetComponent<RectTransform>().sizeDelta = new Vector2(wasteAreaRange, wasteAreaRange);
+        /*canvas = GetComponentInParent<Canvas>();
+        canvas.GetComponent<RectTransform>().sizeDelta = new Vector2(wasteAreaRange, wasteAreaRange);*/
         GetComponent<Image>().color= new Color(1, 0, 0,(float)(patchColorIntensity)/ wasteAreaRange);
         for (int i = 0; i < numberOfWastes; i++)
         {

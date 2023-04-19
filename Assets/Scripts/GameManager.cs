@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject messageBox;
+    public GameObject messageBox;
     [SerializeField] GameObject waste;
     public Slider wasteSlider;
 
@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
     IEnumerator ShowInitialMessage()
     {
         yield return new WaitForSeconds(2);
-        Message.get.ShowMessage("Note", "Take a look around for waste that may be lying on the ground.",false,true,"Next",new UnityAction(Message2));
+        Timer.StartTimer();
+        Message.get.ShowMessage("Note", "Take a look around for waste that may be lying on the ground.\nTimer is running on top of the screen. Collect and process wastes as quickly you can.",false,true,"Next",new UnityAction(Message2));
 
     }
 
