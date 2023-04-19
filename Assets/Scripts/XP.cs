@@ -23,6 +23,6 @@ public class XP : MonoBehaviour
     public static void ChangeXP(int amount)
     {
         xp += amount;
-        XpText.text = "xp: " + xp;
+        XpText.text = "XP: " + xp;
     }
 }
