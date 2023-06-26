@@ -12,9 +12,13 @@ public class CellGridRecycle : MonoBehaviour
         public string itemName;
         public Sprite itemImage;
         public int exit;
+        public CellWasteType cellWasteType;
+        public int machineNo;
     }
 
     public Cell cell;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +47,8 @@ public class CellGridRecycle : MonoBehaviour
             cell.itemImage = item.itemImage;
             cell.itemName = item.itemName;
             cell.exit = item.exit;
+            cell.cellWasteType = item.itemType;
+            cell.machineNo = item.machineSrNo;
 
             GetComponent<Image>().sprite = cell.itemImage;
             GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1f);

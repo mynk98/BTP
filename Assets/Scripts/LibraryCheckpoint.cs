@@ -6,6 +6,7 @@ public class LibraryCheckpoint : MonoBehaviour
 {
     public bool isCloseButtonPressed;
     public GameObject libraryCanvas;
+    [SerializeField] GameObject wastes;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,5 +32,11 @@ public class LibraryCheckpoint : MonoBehaviour
         Player.DeactivateUIHelper();
         libraryCanvas.SetActive(false);
         isCloseButtonPressed = true;
+        if (!GameManager.isInfoCenterVisited)
+        {
+            GameManager.isInfoCenterVisited = true;
+            GameManager.get.InitGame();
+            wastes.SetActive(true);
+        }
     }
 }

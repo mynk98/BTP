@@ -14,9 +14,11 @@ public class RecycleCheckpoints : MonoBehaviour
 
     public RecycleType type;
 
-    public bool isCloseButtonPressed = false;
+    public static bool isCloseButtonPressed = false;
     [SerializeField] GameObject binCanvas;
     [SerializeField] GameObject minimap;
+
+    [SerializeField] Dustbin[] dustbins;
     
 
     public static RecycleCheckpoints get;
@@ -47,11 +49,22 @@ public class RecycleCheckpoints : MonoBehaviour
         {
             minimap.SetActive(false);
             binCanvas.SetActive(true);
-            binCanvas.GetComponentInChildren<TMPro.TMP_Text>().text = "Select the bin whoose garbage you want to recycle";
+            binCanvas.GetComponentInChildren<TMPro.TMP_Text>().text = "Select the bin whose garbage you want to recycle";
             Player.state = Player.PlayerState.recycling;
             Player.ActivateUIHelper();
             Player.currentSelectedRecycleCheckpoint = this;
+            //dustbins[TypeToInt()].Recycle();
+
+
         }
+    }
+
+    int TypeToInt()
+    {
+        if (type == RecycleType.paper) return 0;
+        else if (type == RecycleType.plastic) return 1;
+        else if (type == RecycleType.metal) return 2;
+        else return 3;
     }
 
     public void CloseButton()

@@ -97,7 +97,7 @@ public class QNAManager : MonoBehaviour
 
         gameObject.SetActive(false);
 
-        // delete all chields of parent
+        // delete all childs of parent
     }
 
 

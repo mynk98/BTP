@@ -12,6 +12,7 @@ public class BinSelectUI : MonoBehaviour
     public GameObject binCanvas;
     public GameObject binCanvasCloseButton;
     public GameObject recycleButton;
+    public GameObject recyclingCanvas;
     //[SerializeField] private RawImage _cardImage;
     //[SerializeField] private TextMeshProUGUI _cardText;
 
@@ -134,15 +135,19 @@ public class BinSelectUI : MonoBehaviour
             if (status)
             {
                 ClearCards();
-                gameObject.SetActive(false);
-                binCanvas.SetActive(false);
                 for (int i = 0; i < selectedWastes.Count; i++)
                 {
                     Player.currentSelectedDustbin.RemoveWaste(selectedWastes[i]);
                 }
-                Message.get.ShowMessage("Note!", "Correct Answer! Selected waste has been recycled");
+
+                recyclingCanvas.SetActive(true);
+                Message.get.ShowMessage("Note!", "Correct Answer! You get 100XP.\nNow Solve a Puzzle to complete the recycling process. Place conveyor and machines in the right order" +
+                    "and take the waste to the Garbage truck.");
+                
                 XP.ChangeXP(100);
-                Player.DeactivateUIHelper();
+                gameObject.SetActive(false);
+
+                //Player.DeactivateUIHelper();
             }
             else
             {
@@ -179,5 +184,10 @@ public class BinSelectUI : MonoBehaviour
         }
 
 
+    }
+
+    void StartPuzzle()
+    {
+        recyclingCanvas.SetActive(true);
     }
 }

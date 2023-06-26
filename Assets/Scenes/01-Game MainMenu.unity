@@ -2807,23 +2807,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2685848049662330794, guid: fc862482fe6468d42bdb525f4bc93071, type: 3}
       propertyPath: InstructionList.Array.data[1]
-      value: "<b>Collecting Garbage:</b>\r\n\r\n- point the pointer at the garbage.
+      value: '<b>Vehicle controls:</b>
+
+
+
+        - Use W or up arrow for forward
+        acceleration.
+
+        - Use S or down arrow for backward acceleration.
+
+        -
+        Use A and D or left and right arrows for turning.
+
+        - Use space bar
+        for break.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685848049662330794, guid: fc862482fe6468d42bdb525f4bc93071, type: 3}
+      propertyPath: InstructionList.Array.data[2]
+      value: "<b>Collecting Garbage:</b>\r\n\r\n- Point the pointer at the garbage.
         Once it is highlighted press the left mouse button. \r\n- Garbage bins will
         appear. Choose the correct bin\r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 2685848049662330794, guid: fc862482fe6468d42bdb525f4bc93071, type: 3}
-      propertyPath: InstructionList.Array.data[2]
+      propertyPath: InstructionList.Array.data[3]
       value: '<b>Vehicle checkpoints:</b>
 
 
 
-        - to enter a vehicle stand on
+        - To enter a vehicle stand on
         the vehicle checkpoint with blue color.
 
-        - options will appear to
+        - Options will appear to
         choose between available vehicles at that checkpoint.
 
-        - choose the
+        - Choose the
         desired vehicle.
 
         - To exit a vehicle, park the vehicle at a checkpoint(red
@@ -2831,25 +2850,6 @@ PrefabInstance:
 
         - A vehicle checkpoint with grey color
         means there is no vehicle available.
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2685848049662330794, guid: fc862482fe6468d42bdb525f4bc93071, type: 3}
-      propertyPath: InstructionList.Array.data[3]
-      value: '<b>Vehicle controls:</b>
-
-
-
-        - use W or up arrow for forward
-        acceleration.
-
-        - use S or down arrow for backward acceleration.
-
-        -
-        use A and D or left and right arrows for turning.
-
-        - use space bar
-        for break.
 
 '
       objectReference: {fileID: 0}
@@ -3162,7 +3162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: spazzatura
+  m_text: Spazzatura
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}

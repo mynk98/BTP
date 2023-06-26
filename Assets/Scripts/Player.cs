@@ -47,9 +47,10 @@ public class Player : MonoBehaviour
     public GameObject minimapCamera;
 
     public GameObject arrow;
-    public GameObject initialTargetWaste;
-    //GameObject initialTargetWaste;
+    //public GameObject initialTargetWaste;
     public bool isInitialWasteTargetted=false;
+    public static bool isArrowPointing;
+    [HideInInspector]public Transform pointingObject;
 
     public enum PlayerState
     {
@@ -119,7 +120,7 @@ public class Player : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    arrow.SetActive(false);
+                    if (!isInitialWasteTargetted) HideArrow();
                     isInitialWasteTargetted = true;
                     binUI.SetActive(true);
                     binUI.GetComponentInChildren<TMPro.TMP_Text>().text = "Choose the correct trash bin to put in garbage.";
@@ -139,9 +140,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (!isInitialWasteTargetted)
+        if (isArrowPointing)
         {
-            arrow.transform.rotation= Quaternion.LookRotation(initialTargetWaste.transform.position - arrow.transform.position,Vector3.up);
+            arrow.transform.rotation= Quaternion.LookRotation(pointingObject.position - arrow.transform.position,Vector3.up);
         }
     }
 
@@ -231,7 +232,7 @@ public class Player : MonoBehaviour
 
     public void BinUICloseButton()
     {
-        if(currentSelectedRecycleCheckpoint!=null)currentSelectedRecycleCheckpoint.isCloseButtonPressed = true;
+        RecycleCheckpoints.isCloseButtonPressed = true;
         SegregationCheckpoint.isCloseButtonPressed = true;
         CompostCheckpoint.isCloseButtonPressed = true;
         minimap.SetActive(true);
@@ -240,4 +241,16 @@ public class Player : MonoBehaviour
         DeactivateUIHelper();
     }
 
+    public void PointArrow(Transform objectToPoint)
+    {
+        arrow.SetActive(true);
+        pointingObject = objectToPoint;
+        isArrowPointing = true;
+    }
+
+    public void HideArrow()
+    {
+        arrow.SetActive(false);
+        isArrowPointing = false;
+    }
 }

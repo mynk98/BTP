@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class GameManager : MonoBehaviour
     public static int totatWasteInCity;
     WastePatch[] wastePatches;
 
+    [SerializeField] Transform initialWaste;
+
+    public static bool isInfoCenterVisited = false;
+
 
     private void Awake()
     {
@@ -25,7 +31,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ShowInitialMessage());
+        //Message.get.ShowMessage("Note", "You are standing in front of the Information Center. Step on the purple checkpoint to enter and learn about the solid waste management techniques and how to implement them in the game.");
+        messageBox.SetActive(true);
+        Player.ActivateUIHelper();
+        //StartCoroutine(ShowInitialMessage());
         wastePatches = waste.GetComponentsInChildren<WastePatch>();
         foreach(var item in wastePatches)
         {
@@ -37,7 +46,12 @@ public class GameManager : MonoBehaviour
         wasteSlider.value = 0;
     }
 
-   
+
+
+    public void InitGame()
+    {
+        StartCoroutine(ShowInitialMessage());
+    }
 
     IEnumerator ShowInitialMessage()
     {
@@ -49,7 +63,8 @@ public class GameManager : MonoBehaviour
 
     void Message2()
     {
-        Player.GetInstance().arrow.SetActive(true);
+        print("msg2");
+        Player.GetInstance().PointArrow(initialWaste);
         StartCoroutine(Show2ndMessage());
         Player.DeactivateUIHelper();
         messageBox.SetActive(false);
@@ -66,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         Player.DeactivateUIHelper();
         messageBox.SetActive(false);
-        StopAllCoroutines();
+        if(isInfoCenterVisited) StopAllCoroutines();
         
     }
 
@@ -75,7 +90,18 @@ public class GameManager : MonoBehaviour
         wasteSlider.value += 1;
     }
 
+    public void OnMapButtonClick()
+    {
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
+        string buttonName = clickedButton.GetComponent<TMP_Text>().text;
 
+        Message.get.ShowMessage("Note", "Do you want to visit " + buttonName + " ?", true, true, "Yes", new UnityAction(PointArrowToDestination));
+    }
+
+    public void PointArrowToDestination()
+    {
+        //point arrow to the destination
+    }
 
 
 }

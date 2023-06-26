@@ -130,6 +130,7 @@ public class Dustbin : MonoBehaviour
 
     public void Recycle()
     {
+        Player.currentSelectedDustbin = this;
         if (Player.currentSelectedRecycleCheckpoint.type.ToString() == dustbinType.ToString())
         {
             bool isAllSameType = true;
@@ -166,14 +167,15 @@ public class Dustbin : MonoBehaviour
             else
             {
                 XP.ChangeXP(-10);
+                RecycleCheckpoints.isCloseButtonPressed = true;
                 Message.get.ShowMessage("Warning!", "All the waste in the selected dustbin are not "+ dustbinType.ToString()+". Please go to the segregation centre to segregate wastes correctly.");
             }
         }
-        else
+        /*else
         {
             XP.ChangeXP(-5);
             Message.get.ShowMessage("Warning!", "Please select correct bin.");
-        }
+        }*/
     }
 
     public void Segregate()
